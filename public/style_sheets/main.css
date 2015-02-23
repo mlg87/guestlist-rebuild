@@ -1,0 +1,118 @@
+/*
+
+  SITE COLORS:
+
+    blue: #3498db
+    blue(hover): #21628D
+    dark-gray: #626E73
+    darker-gray: 424A4D (66, 74, 77)
+    gray: #8B9CA4
+    clouds: #ecf0f1
+
+ */
+
+body {
+  padding-top: 50px; /* required for bootstrap sticky nav */
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+/*******************************************************
+
+OVERWRITING BOOTSTRAP DEFAULTS
+
+*******************************************************/
+
+.btn-primary {
+  background-color: #3498db;
+}
+
+.btn-primary:hover {
+  background-color: #21628D;
+}
+
+
+/* NAV BAR STYLING */
+
+.navbar {
+  background-color: #fff;
+}
+
+.navbar-brand {
+  font-size: 2em;
+}
+
+.navbar-default .navbar-brand {
+  color: #3498db;
+}
+
+.navbar-default:hover .navbar-brand:hover {
+  color: #21628D;
+}
+
+
+/* MODAL STYLILNG */
+
+.modal-title {
+  text-align: center;
+}
+
+.modal-content {
+  color: #3498db;
+}
+
+.modal-body {
+  color: #626E73;
+  text-align: left;
+}
+
+
+/* FOOTER STYLING */
+
+.footer {
+  text-align: center;
+  background-color: #fff;
+  height: 30px;
+  padding: 10px;
+  line-height: 10px;
+}
+
+/*******************************************************
+
+UTILITY CLASSES
+
+*******************************************************/
+
+.inactive {
+  display: none;
+}
+
+.btm-spacer {
+  border-bottom: 1px solid #8B9CA4;
+  padding: 20px 0 20px;
+}
+
+.middle {
+  text-align: center;
+}
+
+.p-spacer {
+  padding-top: 10px;
+}
+
+.quote-src-right {
+  text-align: right;
+}
+
+.side-cleanup {
+  padding: 0;
+}
+
+.snippet-overlay {
+  background-color: rgba(66, 74, 77, .4);
+  z-index: 1000;
+}
+
+.timestamp {
+  font-size: .7em;
+}

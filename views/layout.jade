@@ -1,0 +1,35 @@
+doctype html
+html(lang='en')
+	head
+		meta(charset="utf-8")
+		title GuestList | Find Your +1
+		link(rel='stylesheet', type='text/css', href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css')
+		link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Montserrat:400,700')
+		link(rel='stylesheet', type='text/css', href='/style_sheets/main.css')
+		block head-scripts
+
+	body
+		.full-page-wrapper
+		//- navbar
+		nav(class='navbar navbar-default navbar-fixed-top')
+			.container
+				.navbar-header
+					a(href='#' class='navbar-brand') GuestList
+				button(type='button' class='btn btn-default navbar-btn navbar-right' id='landing-login') Login
+				form(class='navbar-form navbar-right inactive' id='main-login-form')
+					.form-group
+						label(class='sr-only' for='landing-login-email') Email address
+						input(type='email' class='form-control' id='landing-login-email' placeholder='Enter email')
+					.form-group
+						label(class='sr-only' for='landing-login-pass') Password
+						input(type='password' class='form-control' id='landing-login-pass' placeholder='Password')
+					button(type='submit' class='btn btn-primary') Sign in
+		block content
+		//- footer
+		footer(class='footer navbar-fixed-bottom')
+			.container
+				p(class='text-muted credit') &copy;2015&nbsp;
+					a(href='https://github.com/mlg87') Mason Goetz
+		script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js')
+		script(src='//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js')
+		block body-scripts
