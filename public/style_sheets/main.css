@@ -31,6 +31,12 @@ OVERWRITING BOOTSTRAP DEFAULTS
   background-color: #21628D;
 }
 
+.form-control {
+  border-radius: 0px;
+  /* this was the only way to get rid of rounded corners on the selects */
+  -webkit-appearance: none;
+}
+
 
 /* NAV BAR STYLING */
 
@@ -68,6 +74,10 @@ OVERWRITING BOOTSTRAP DEFAULTS
 
 
 /* FOOTER STYLING */
+
+.footer-pusher {
+  padding-bottom: 60px;
+}
 
 .footer {
   text-align: center;

@@ -1,0 +1,44 @@
+extends layout
+
+block content
+	.container.footer-pusher
+		.row
+			.col-md-6.col-md-offset-3
+				h1 Guest Registration
+				form#guest-registration-form-landing-page(action='')
+					.row
+						.col-md-6.col-sm-6
+							.form-group
+								label(for='guest-first-name') First Name
+								input#guest-first-name.form-control(type='text', placeholder='First Name')
+						.col-md-6.col-sm-6
+							.form-group
+								label(for='guest-last-name') Last Name
+								input#guest-last-name.form-control(type='text', placeholder='Last Name')
+					.form-group
+						label(for='guest-email') Email
+						input#guest-email.form-control(type='email', placeholder='mrawesome@gmail.com')
+					.form-group
+						label(for='guest-profile-pic') Profile Picture (square image at least 250px x 250px)
+						input#guest-profile-pic.form-control(type='url', placeholder='URL')
+					.form-group
+						label(for='guest-hometown') Hometown
+						input#guest-hometown.form-control(type='text', placeholder='City')
+					.row
+						.col-md-6.col-sm-6.col-xs-6
+							.form-group
+								label(for='guest-age') Age
+								input#guest-age.form-control(type='number', placeholder='##')
+						.col-md-6.col-sm-6.col-xs-6
+							.form-group
+								label(for='guest-friends-of') Friend Of The
+								select#guest-friends-of.form-control
+									option(value='Bride') Bride
+									option(value='Groom') Groom
+					.form-group
+						label(for='guest-background-story') How You Know The Bride/Groom
+						textarea#guest-background-story.form-control(rows='3', placeholder='Well it all started on the first day of college...')
+					.form-group
+						label(for='guest-wedding-story') Your Best Story About The Couple
+						textarea#guest-wedding-story.form-control(rows='3', placeholder="This one time when we were all at Shotgun Willy's...")
+					input#guest-landing-page-submit-btn.btn.btn-primary.btn-lg(type='submit')

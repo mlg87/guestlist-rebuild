@@ -19,96 +19,9 @@ block content
 					h3.middle Register As
 					.row
 						.col-md-6
-							button#guest-register-landing-btn.btn.btn-primary.btn-lg.modal-btn Guest
+							a(href='/guest-registration').btn.btn-primary.btn-lg.modal-btn Guest
 						.col-md-6
-							button#host-register-landing-btn.btn.btn-primary.btn-lg.modal-btn Host
-	#guest-landing-page-registration-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='editWeddingInfo', aria-hidden='true')
-		.modal-dialog
-			.modal-content
-				.modal-header
-					button.close(type='button', data-dismiss='modal', aria-label='Close')
-						span(aria-hidden='true') &times;
-					h4.modal-title Guest Information
-				.modal-body
-					form#guest-registration-form-landing-page(action='')
-						.form-group
-							label(for='guest-name') Name
-							input#guest-name.form-control(type='text', placeholder='First Name Only')
-						.form-group
-							label(for='guest-email') Email
-							input#guest-email.form-control(type='email', placeholder='mrawesome@gmail.com')
-						.form-group
-							label(for='guest-profile-pic') Profile Picture (square image at least 250px x 250px)
-							input#guest-profile-pic.form-control(type='url', placeholder='URL')
-						.form-group
-							label(for='guest-hometown') Hometown
-							input#guest-hometown.form-control(type='text', placeholder='City')
-						.form-group
-							label(for='guest-age') Age
-							input#guest-age.form-control(type='number', placeholder='##')
-						.form-group
-							label(for='guest-friends-of') Friend Of The
-							select#guest-friends-of.form-control
-								option(value='Bride') Bride
-								option(value='Groom') Groom
-						.form-group
-							label(for='guest-background-story') How You Know The Bride/Groom
-							textarea#guest-background-story.form-control(rows='3', placeholder='Well it all started on the first day of college...')
-						.form-group
-							label(for='guest-wedding-story') Your Best Story About The Couple
-							textarea#guest-wedding-story.form-control(rows='3', placeholder="This one time when we were all at Shotgun Willy's...")
-						input#guest-landing-page-submit-btn.btn.btn-primary.btn-lg(type='submit')
-	#host-landing-page-registration-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='editWeddingInfo', aria-hidden='true')
-		.modal-dialog
-			.modal-content
-				.modal-header
-					button.close(type='button', data-dismiss='modal', aria-label='Close')
-						span(aria-hidden='true') &times;
-					h4.modal-title Host Information
-				.modal-body
-					form#host-registration-form-landing-page(action='')
-						.form-group
-							label(for='host-name') Name
-							input#host-name.form-control(type='text', name='host-name', placeholder='First Name Only')
-						.form-group
-							label(for='host-age') Age
-							input#host-age.form-control(type='number', name='host-age', placeholder='##')
-						.form-group
-							label(for='host-type') You Are The:
-							select#host-type.form-control
-								option(value='bride') Bride
-								option(value='groom') Groom
-						.form-group
-							label(for='host-name') Your Fiance&apos;s Name
-							input#host-fiance-name.form-control(type='text', placeholder='First Name Only')
-						.form-group
-							label(for='host-profile-pic') Couple Photo (square image at least 250px x 250px)
-							input#host-profile-pic.form-control(type='url', placeholder='URL')
-						.form-group
-							label(for='host-wedding-location') Location
-							input#host-wedding-location.form-control(type='text', placeholder='City')
-						.form-group
-							label(for='host-wedding-venue') Venue
-							input#host-wedding-venue.form-control(type='text', placeholder='eg. Pepsi Center')
-						.form-group
-							label(for='host-wedding-date') Date
-							input#host-wedding-date.form-control(type='text', placeholder='mm/dd/yyyy')
-						.form-group
-							label(for='host-wedding-time') Time
-							input#host-wedding-time.form-control(type='text', placeholder='h(h):mm PM/AM')
-						.form-group
-							label(for='host-rehearsal-dinner-venue') Rehearsal Dinner Venue
-							input#host-rehearsal-dinner-venue.form-control(type='text', placeholder='eg. Red Lobster on 5th')
-						.form-group
-							label(for='host-rehearsal-dinner-time') Rehearsal Dinner Time
-							input#host-rehearsal-dinner-time.form-control(type='text', placeholder='h(h):mm PM/AM')
-						.form-group
-							label(for='host-rehearsal-dinner-date') Rehearsal Dinner Date
-							input#host-rehearsal-dinner-date.form-control(type='text', placeholder='mm/dd/yyyy')
-						.form-group
-							label(for='host-wedding-site') Wedding Site
-							input#host-wedding-site.form-control(type='url', placeholder='URL')
-						input#host-landing-page-submit-btn.btn.btn-primary.btn-lg(type='submit')
+							a(href='/host-registration').btn.btn-primary.btn-lg.modal-btn Host
 	.blue-overlay.bg   
 		.jumbotron
 			.container

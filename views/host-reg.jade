@@ -1,0 +1,71 @@
+extends layout
+
+block content
+	.container.footer-pusher
+		.row
+			.col-md-6.col-md-offset-3
+				h1 Host Registration 
+				form#host-registration-form-landing-page(action='')
+					.row
+						.col-md-6.col-sm-6
+							.form-group
+								label(for='host-first-name') First Name
+								input#host-first-name.form-control(type='text', placeholder='First')
+						.col-md-6.col-sm-6
+							.form-group
+								label(for='host-last-name') Last Name
+								input#host-last-name.form-control(type='text', placeholder='Last')
+					.row
+						.col-md-6.col-sm-6.col-xs-6
+							.form-group
+								label(for='host-age') Age
+								input#host-age.form-control(type='number', name='host-age', placeholder='##')
+						.col-md-6.col-sm-6.col-xs-6
+							.form-group
+								label(for='host-type') You Are The:
+								select#host-type.form-control
+									option(value='bride') Bride
+									option(value='groom') Groom
+					.row
+						.col-md-6.col-sm-6.col-xs-6
+							.form-group
+								label(for='host-fiance-first-name-name') Your Fiance&apos;s First Name
+								input#host-fiance-first-name.form-control(type='text', placeholder='First')
+						.col-md-6.col-sm-6.col-xs-6
+							.form-group
+								label(for='host-fiance-first-name-name') Your Fiance&apos;s Last Name
+								input#host-fiance-last-name.form-control(type='text', placeholder='Last')
+					.form-group
+						label(for='host-profile-pic') Couple Photo (square image at least 250px x 250px)
+						input#host-profile-pic.form-control(type='url', placeholder='URL')
+					.form-group
+						label(for='host-wedding-location') Location
+						input#host-wedding-location.form-control(type='text', placeholder='City')
+					.form-group
+						label(for='host-wedding-venue') Venue
+						input#host-wedding-venue.form-control(type='text', placeholder='eg. Pepsi Center')
+					.row
+						.col-md-6.col-sm-6.col-xs-6
+							.form-group
+								label(for='host-wedding-date') Date
+								input#host-wedding-date.form-control(type='date', placeholder='mm/dd/yyyy')
+						.col-md-6.col-sm-6.col-xs-6
+							.form-group
+								label(for='host-wedding-time') Time
+								input#host-wedding-time.form-control(type='time', placeholder='h(h):mm PM/AM')
+					.form-group
+						label(for='host-rehearsal-dinner-venue') Rehearsal Dinner Venue
+						input#host-rehearsal-dinner-venue.form-control(type='text', placeholder='eg. Red Lobster on 5th')
+					.row
+						.col-md-6.col-sm-6.col-xs-6
+							.form-group
+								label(for='host-rehearsal-dinner-time') Rehearsal Dinner Time
+								input#host-rehearsal-dinner-time.form-control(type='time', placeholder='h(h):mm PM/AM')
+						.col-md-6.col-sm-6.col-xs-6
+							.form-group
+								label(for='host-rehearsal-dinner-date') Rehearsal Dinner Date
+								input#host-rehearsal-dinner-date.form-control(type='date', placeholder='mm/dd/yyyy')
+					.form-group
+						label(for='host-wedding-site') Wedding Site
+						input#host-wedding-site.form-control(type='url', placeholder='URL')
+					input#host-landing-page-submit-btn.btn.btn-primary.btn-lg(type='submit')
