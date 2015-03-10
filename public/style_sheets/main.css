@@ -23,6 +23,10 @@ OVERWRITING BOOTSTRAP DEFAULTS
 
 *******************************************************/
 
+.btn {
+  border-radius: 0;
+}
+
 .btn-primary {
   background-color: #3498db;
 }
@@ -85,6 +89,7 @@ OVERWRITING BOOTSTRAP DEFAULTS
   height: 30px;
   padding: 10px;
   line-height: 10px;
+  background-color: rgb(220, 220, 220);
 }
 
 /*******************************************************
@@ -125,4 +130,38 @@ UTILITY CLASSES
 
 .timestamp {
   font-size: .7em;
+}
+
+.btm-divider {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.form-spacer {
+  width: 100%;
+  margin: 30px 0 30px;
+  border-bottom: 1px solid #8B9CA4;
+}
+
+.form-fieldset {
+  margin-top: 40px;
+}
+
+.form-fieldset legend {
+  font-style: italic;
+  color: #3498db;
+}
+
+
+/*******************************************************
+
+MEDIA QUERIES
+
+*******************************************************/
+
+@media (max-width: 768px) {
+  body {
+    padding-top: 100px; /* required for bootstrap sticky nav */
+  } 
 }

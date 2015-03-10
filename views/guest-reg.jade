@@ -5,40 +5,42 @@ block content
 		.row
 			.col-md-6.col-md-offset-3
 				h1 Guest Registration
-				form#guest-registration-form-landing-page(action='')
+				p.btm-divider Too often some of the best times have been spoiled by the random plus one that you found at the last minute. Imagine how much better all of those weddings would've been had you not gone with the girl from accounting. Instead you met Ashley weeks before, hit it off and had a great time over the wedding weekend. After your friends' special day, it's your call if things move to the next step, or if you and your new friend call it what it is. 
+				form#guest-registration-form(method='post', action='/guest-portal')
 					.row
 						.col-md-6.col-sm-6
 							.form-group
 								label(for='guest-first-name') First Name
-								input#guest-first-name.form-control(type='text', placeholder='First Name')
+								input#guest-first-name.form-control(name='guestFirstName', type='text', placeholder='First Name')
 						.col-md-6.col-sm-6
 							.form-group
 								label(for='guest-last-name') Last Name
-								input#guest-last-name.form-control(type='text', placeholder='Last Name')
+								input#guest-last-name.form-control(name='guestLastName', type='text', placeholder='Last Name')
 					.form-group
 						label(for='guest-email') Email
-						input#guest-email.form-control(type='email', placeholder='mrawesome@gmail.com')
+						input#guest-email.form-control(name='guestEmail', type='email', placeholder='mrawesome@gmail.com')
 					.form-group
 						label(for='guest-profile-pic') Profile Picture (square image at least 250px x 250px)
-						input#guest-profile-pic.form-control(type='url', placeholder='URL')
+						input#guest-profile-pic.form-control(name='guestProfilePic', type='url', placeholder='URL')
 					.form-group
 						label(for='guest-hometown') Hometown
-						input#guest-hometown.form-control(type='text', placeholder='City')
+						input#guest-hometown.form-control(name='guestHometown', type='text', placeholder='City')
 					.row
 						.col-md-6.col-sm-6.col-xs-6
 							.form-group
 								label(for='guest-age') Age
-								input#guest-age.form-control(type='number', placeholder='##')
+								input#guest-age.form-control(name='guestAge', type='number', placeholder='##')
 						.col-md-6.col-sm-6.col-xs-6
 							.form-group
 								label(for='guest-friends-of') Friend Of The
-								select#guest-friends-of.form-control
+								select#guest-friends-of.form-control(name='guestFriendsOf')
 									option(value='Bride') Bride
 									option(value='Groom') Groom
 					.form-group
 						label(for='guest-background-story') How You Know The Bride/Groom
-						textarea#guest-background-story.form-control(rows='3', placeholder='Well it all started on the first day of college...')
+						textarea#guest-background-story.form-control(name='guestBackgroundStory', rows='3', placeholder='Well it all started on the first day of college...')
 					.form-group
 						label(for='guest-wedding-story') Your Best Story About The Couple
-						textarea#guest-wedding-story.form-control(rows='3', placeholder="This one time when we were all at Shotgun Willy's...")
+						textarea#guest-wedding-story.form-control(name='guestWeddingStory', rows='3', placeholder="This one time when we were all at Shotgun Willy's...")
+					.form-spacer
 					input#guest-landing-page-submit-btn.btn.btn-primary.btn-lg(type='submit')

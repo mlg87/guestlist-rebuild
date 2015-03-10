@@ -1,5 +1,26 @@
 Landing-page functionality:
- ☐ click on 'guest' or 'host' button takes user to a new registration page with a form displayed depending on which they chose
+ ✔ click on 'guest' or 'host' button takes user to a new registration page with a form displayed depending on which they chose @done (15-02-27 11:54)
+
+Registration Forms:
+ ☐ after a user fills out their form, take them to their given portal
+   ☐ create a new document in the 'users' collection
+   ☐ load portal with their info
+ ✔ Change the 'rehearsal dinner' items to 'reception' and change the plain venue to 'ceremony venue' @done (15-03-09 22:35)
+
+Login Page:   
+ ☐ upon login, redirect to a given user's portal
+
+Questions:
+ ☐ how do i display a particular navbar depending on who is logged in? /// [if(user.role = 'guest') OR if(user.role= 'host')]
+
+ ☐ how should i store the date in the db?
 
 Cool features:
  ☐ create a better method for blurring the background when a modal comes up
+
+User Authentication:   
+ ☐ learn 'sessions'
+ ☐ learn 'passport'
+   ☐ Do I need to use 'connect-flash' for the flash messages?
+ ☐ learn 'sockets'
+ ☐ 

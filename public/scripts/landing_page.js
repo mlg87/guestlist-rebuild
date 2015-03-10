@@ -1,3 +1,7 @@
+////////////
+// CLIENT //
+////////////
+
 $(document).on('ready', function() {
 
 ///////////////////////////////////////////////
@@ -24,7 +28,7 @@ $(document).on('ready', function() {
 // CLICK HANDLER FOR 'GUEST' AND 'HOST' BTNS IN REG-MODAL //
 ////////////////////////////////////////////////////////////
 
-  
+
 });
 
 
