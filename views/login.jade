@@ -9,7 +9,8 @@ block content
 					.row
 						.col-md-6.col-sm-6.col-xs-6
 							.form-group
-								input#user-email(name='email', type='email', placeholder='Email')
+								//- this inputs name has to be 'username' for passport to work
+								input#user-email(name='username', type='email', placeholder='Email')
 						.col-md-6.col-sm-6.col-xs-6
 							.form-group
 								input#user-password(name='password', type='password', placeholder='Password')

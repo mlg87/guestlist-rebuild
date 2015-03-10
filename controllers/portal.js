@@ -38,6 +38,7 @@ var portalController = {
 		res.render('host-portal');
 	},
 
+	// handles user authentication when they sign in using the localStrategy
 	userPortal: function(req, res, next) {
 		console.log('inside userPortal:', req.body);
 		passport.authenticate('local', function(err, user, info) {
@@ -51,10 +52,17 @@ var portalController = {
 			req.login(user, function(err){
 				if(err) return next(err);
 				// user has successfully logged in
-				console.log('this is a user.role:', user.role);
-				return res.redirect('/');
+				console.log('this is a user.role for a successfully logged in user:', user.role);
+				return res.redirect('/guest-portal');
 			});
 		}) (req, res, next);
+	},
+
+	userLogout: function(req, res) {
+		var userToLogOut = req.user;
+		req.logout();
+		console.log('user successfully logged out:', userToLogOut);
+		res.redirect('/');
 	},
 
 	/////////////////

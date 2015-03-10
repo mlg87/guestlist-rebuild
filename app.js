@@ -30,11 +30,16 @@ app.get('/host-registration', indexController.hostReg);
 
 
 app.post('/userlogin', portalController.userPortal);
+// is scope for facebook where i require what i want to get from fb?
+app.get('/auth/facebook', passport.authenticate('facebook', {scope: 'email'}));
+// ensureAuthenticated protects routes if a given user is not logged in
+// this needs to come before the portals so user's have to be logged in
 app.use(passportConfig.ensureAuthenticated);
+
+app.get('/logout', portalController.userLogout);
 
 app.get('/host-portal', portalController.hostLoggedIn);
 app.get('/guest-portal', portalController.guestLoggedIn);
-app.get('/auth/facebook', passport.authenticate('facebook', {scope: 'email'}));
 
 /////////////////////////////
 // PASSPORT AUTHENTICATION //

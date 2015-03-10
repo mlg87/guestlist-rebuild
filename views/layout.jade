@@ -16,7 +16,9 @@ html(lang='en')
 				.navbar-header
 					a(href='/' class='navbar-brand') Plus1
 				a(href='/login')
-					button.btn.btn-default.navbar-btn.navbar-right(type='button' id='landing-login') Login
+					button#landing-login.btn.btn-default.navbar-btn.navbar-right(type='button') Login
+				a(href='/logout')
+					button.btn.btn-danger.navbar-btn.navbar-right(type='button') Logout
 				//- form(class='navbar-form navbar-right inactive' id='main-login-form')
 				//- 	.form-group
 				//- 		label(class='sr-only' for='landing-login-email') Email address

@@ -28,7 +28,7 @@ passport.serializeUser(function(user, next) {
 	// convert user object to session-storing id
 	next(null, user._id);
 });
-passport.deserializeUser(function(is, next) {
+passport.deserializeUser(function(id, next) {
 	// convert session-stored id into a user object
 	User.findById(id, function(err, user) {
 		next(err, user);
@@ -87,6 +87,7 @@ var fbStrategy = new FacebookStrategy({
 	callbackURL: 'http://localhost:7160/auth/facebook/callback'
 }, function(accessToken, refreshToken, profile, next) {
 	User.findOne({fbId: profile.id}, function(err, user) {
+		console.log(err);
 		if(user){
 			// user was found already, allow access
 			next(null, user);
@@ -94,8 +95,11 @@ var fbStrategy = new FacebookStrategy({
 			// user was not found, save and allow access
 			var newUser = new User({
 				fbId: profile.id,
-				name: profile.displayName,
-				email: profile.emails[0].value
+				firstName: profile.first_name,
+				lastName: profile.last_name,
+				email: profile.emails[0].value,
+				hometown: profile.hometown,
+				profilePic: profile.photos[0].value
 			});
 			newUser.save(function(err, user) {
 				if(err) throw err;

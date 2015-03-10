@@ -51,7 +51,7 @@ var userSchema = mongoose.Schema({
 	/////////////////
 	// GUEST DATA //
 	/////////////////
-	guestHometown: String,
+	hometown: String,
 	guestFriendsOf: String,
 	guestBackgroundStory: String,
 	guestWeddingStory: String,
@@ -86,7 +86,7 @@ userSchema.methods.comparePassword = function(candidatePassword, next) {
 		this.password,
 		function(err, isMatch) {
 			if(err) return next(err);
-			// if no error:
+			// if no error, hand off the 'isMatch' value:
 			next(null, isMatch);
 		});
 };

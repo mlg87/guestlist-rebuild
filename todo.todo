@@ -9,6 +9,11 @@ Registration Forms:
 
 Login Page:   
  ☐ upon login, redirect to a given user's portal
+   ☐ in the user.js 'userPortal', add logic to determine the role of the user
+
+NavBar:   
+ ☐ render a different navbar based on who is logged in
+ ☐ render a logout button once a user is logged in
 
 Questions:
  ☐ how do i display a particular navbar depending on who is logged in? /// [if(user.role = 'guest') OR if(user.role= 'host')]
