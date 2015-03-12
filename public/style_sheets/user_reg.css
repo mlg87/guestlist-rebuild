@@ -1,0 +1,10 @@
+.input-cleaner {
+  border: none;
+  background-color: #fff;
+  text-align: left; 
+}
+
+.input-cleaner:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+}

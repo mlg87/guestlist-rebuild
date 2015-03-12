@@ -1,0 +1,18 @@
+.user-portal-prof-pic {
+	height: 250px;
+	width: 250px;
+	margin: auto;
+	overflow: hidden;
+  border: 5px solid #3498db;
+	border-radius: 100%;
+	
+}
+
+.user-portal-prof-pic img{
+	width: 100%;
+	z-index: -1;
+}
+
+.user-portal-container {
+	margin-top: 50px;
+}

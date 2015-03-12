@@ -10,6 +10,8 @@ Registration Forms:
 Login Page:   
  ☐ upon login, redirect to a given user's portal
    ☐ in the user.js 'userPortal', add logic to determine the role of the user
+ ☐ facebook authentication
+   ☐ take user photo url as well as name and email
 
 NavBar:   
  ☐ render a different navbar based on who is logged in
@@ -22,6 +24,8 @@ Questions:
 
 Cool features:
  ☐ create a better method for blurring the background when a modal comes up
+ ☐ extend the session cookie to keep users logged in indefinitely
+ ☐ use jQueryValidate for form validation
 
 User Authentication:   
  ☐ learn 'sessions'

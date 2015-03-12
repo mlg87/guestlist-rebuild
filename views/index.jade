@@ -7,6 +7,14 @@ block body-scripts
 	script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js')
 	script(src='/scripts/landing_page.js')
 
+block navbar
+	unless user
+		a(href='/login')
+			button#landing-login.btn.btn-default.navbar-btn.navbar-right(type='button') Login
+	if user
+		a(href='/logout')
+			button.btn.btn-danger.navbar-btn.navbar-right(type='button') Logout
+
 block content
 	#registrationModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
 		.modal-dialog
@@ -14,7 +22,7 @@ block content
 				.modal-header
 					button.close(type='button', data-dismiss='modal', aria-label='Close')
 						span(aria-hidden='true') &times;                   
-					h4#myModalLabel.modal-title Register for GuestList
+					h4#myModalLabel.modal-title Register for Plus1
 				.modal-body
 					h3.middle Register As
 					.row
@@ -29,4 +37,4 @@ block content
 					h2 Why Should the Bride & Groom Have All the Fun?         
 					p Plus1 puts you in touch with other singles heading to the same wedding and let&apos;s you connect before you arrive. Till tomorrow do you part.
 					//- button trigger for registration modal
-					button#landing-page-registration.btn.btn-primary.btn-lg(data-toggle='modal', data-target='#registrationModal') Register for GuestList
+					button#landing-page-registration.btn.btn-primary.btn-lg(data-toggle='modal', data-target='#registrationModal') Register for PLus1

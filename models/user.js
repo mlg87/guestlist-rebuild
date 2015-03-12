@@ -14,12 +14,12 @@ var userSchema = mongoose.Schema({
 	},
 	// general data
 	firstName: {
-		type: String,
-		required: true
+		type: String/*,
+		required: true*/
 	},
 	lastName: {
-		type: String,
-		required: true
+		type: String/*,
+		required: true*/
 	},
 	email: {
 		type: String,
@@ -27,8 +27,8 @@ var userSchema = mongoose.Schema({
 		unique: true
 	},
 	password: {
-		type: String,
-		required: true,
+		type: String/*,
+		required: true,*/
 	},
 	age: Number,
 	profilePic: String,
@@ -58,6 +58,9 @@ var userSchema = mongoose.Schema({
 	timestamp: {type: Date, default: Date.now}
 });
 
+// this allows us to hook into the pre-save DB flow
+// our cb will be called whenever a new user is about to
+// be saved to the db so that we can encrypt the password
 userSchema.pre('save', function(next) {
 	// check if this is a new password
 	if(!this.isModified('password')){
@@ -66,7 +69,13 @@ userSchema.pre('save', function(next) {
 
 	// if we make it this far, user has modified the password
 	// time for encryption
+	
+	// store access to 'this', which represents the current user document
 	var user = this;
+
+	// generate an encryption 'salt', this is a special way of increasing
+	// the encryption power by wrapping the given string in a secret string
+	// something like 'secretpasswordsecret' and then encrypting that result
 	bcrypt.genSalt(10, function(err, salt){
 		if(err) return next(err);
 		// if we reach this point, we have a successful salt

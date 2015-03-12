@@ -17,11 +17,11 @@ $(document).on('ready', function() {
 // CLICK HANDLER FOR LANDING-PAGE LOGIN //
 //////////////////////////////////////////
 
-  $('#landing-login').on('click', function() {
+  /*$('#landing-login').on('click', function() {
     $(this).addClass('inactive');
     $('#main-login-form').show();
     $('#landing-login-email').focus();
-  });
+  });*/
 
 
 ////////////////////////////////////////////////////////////

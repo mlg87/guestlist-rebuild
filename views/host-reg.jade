@@ -1,77 +1,91 @@
 extends layout
 
+block head-scripts
+	link(rel='stylesheet', type='text/css', href='/style_sheets/user_reg.css')
+
+block navbar
+	unless user
+		a(href='/login')
+			button#landing-login.btn.btn-default.navbar-btn.navbar-right(type='button') Login
+	if user
+		a(href='/logout')
+			button.btn.btn-danger.navbar-btn.navbar-right(type='button') Logout
+
 block content
 	.container.footer-pusher
 		.row
 			.col-md-6.col-md-offset-3
 				h1 Host Registration
-				p.btm-divider GuestList allows you to not only connect your friends with one another, you can also save some dollars too. By connecting before your special day, your guests will know each other better before the festivities kick off. You are no longer obligated to extend +1s to your single friends, and they'll thank you for it.
-				form#host-registration-form(method='post', action='/host-portal')
+				p.btm-divider Plus1 allows you to not only connect your friends with one another, you can also save some dollars too. By connecting before your special day, your guests will know each other better before the festivities kick off. You are no longer obligated to extend +1s to your single friends, and they'll thank you for it.
+				form#host-registration-form(method='post', action='/host-reg-form')
 					.row
 						.col-md-6.col-sm-6
 							.form-group
 								label(for='host-first-name') First Name
-								input#host-first-name.form-control(name='hostFirstName' type='text', placeholder='First')
+								input#host-first-name.form-control(name='hostFirstName' type='text', placeholder='First', required='true')
 						.col-md-6.col-sm-6
 							.form-group
 								label(for='host-last-name') Last Name
-								input#host-last-name.form-control(name='hostLastName' type='text', placeholder='Last')
+								input#host-last-name.form-control(name='hostLastName' type='text', placeholder='Last', required='true')
 					.form-group
 						label(for='host-email') Email
-						input#host-email.form-control(name='hostEmail' type='email', placeholder='me@awesome.com')
+						input#host-email.form-control(name='hostEmail' type='email', placeholder='me@awesome.com', required='true')
+					.form-group
+						label(for='host-password') Password
+						input#host-password.form-control(name='hostPassword' type='password', placeholder='abracadabra', required='true')
 					.row
 						.col-md-6.col-sm-6.col-xs-6
 							.form-group
 								label(for='host-age') Age
-								input#host-age.form-control(name='hostAge' type='number', placeholder='##')
+								input#host-age.form-control(name='hostAge' type='number', placeholder='##', required='true')
 						.col-md-6.col-sm-6.col-xs-6
 							.form-group
 								label(for='host-type') You Are The:
-								select#host-type.form-control(name='hostType')
+								select#host-type.form-control(name='hostType', required='true')
 									option(value='bride') Bride
 									option(value='groom') Groom
 					.row
 						.col-md-6.col-sm-6.col-xs-6
 							.form-group
 								label(for='host-fiance-first-name') Your Fiance&apos;s First Name
-								input#host-fiance-first-name.form-control(name='hostFianceFirstName' type='text', placeholder='First')
+								input#host-fiance-first-name.form-control(name='hostFianceFirstName' type='text', placeholder='First', required='true')
 						.col-md-6.col-sm-6.col-xs-6
 							.form-group
 								label(for='host-fiance-last-name-name') Your Fiance&apos;s Last Name
-								input#host-fiance-last-name.form-control(name='hostFianceLastName' type='text', placeholder='Last')
+								input#host-fiance-last-name.form-control(name='hostFianceLastName' type='text', placeholder='Last', required='true')
 					.form-group
 						label(for='host-profile-pic') Couple Photo (square image at least 250px x 250px)
-						input#host-profile-pic.form-control(name='hostProfilePic' type='url', placeholder='URL')
+						input#host-profile-pic.form-control(name='hostProfilePic' type='url', placeholder='URL', required='true')
 					fieldset.form-fieldset 
 						legend Ceremony Info
 						.form-group
 							label(for='host-wedding-location') Location
-							input#host-wedding-location.form-control(name='hostWeddingLocation' type='text', placeholder='City')
+							input#host-wedding-location.form-control(name='hostWeddingLocation' type='text', placeholder='City', required='true')
 						.form-group
 							label(for='host-wedding-venue') Venue
-							input#host-wedding-venue.form-control(name='hostWeddingVenue' type='text', placeholder='eg. Pepsi Center')
+							input#host-wedding-venue.form-control(name='hostWeddingVenue' type='text', placeholder='eg. Pepsi Center', required='true')
 						.row
 							.col-md-6.col-sm-6.col-xs-6
 								.form-group
 									label(for='host-wedding-date') Date
-									input#host-wedding-date.form-control(name='hostWeddingDate' type='date', placeholder='mm/dd/yyyy')
+									input#host-wedding-date.form-control(name='hostWeddingDate' type='date', placeholder='mm/dd/yyyy', required='true')
 							.col-md-6.col-sm-6.col-xs-6
 								.form-group
 									label(for='host-wedding-time') Time
-									input#host-wedding-time.form-control(name='hostWeddingTime' type='time', placeholder='h(h):mm PM/AM')
+									input#host-wedding-time.form-control(name='hostWeddingTime' type='time', placeholder='h(h):mm PM/AM', required='true')
 					fieldset.form-fieldset
 						legend Reception Info
 						.row
 							.col-md-9.col-sm-9.col-xs-9
 								.form-group
 									label(for='host-reception-venue') Venue
-									input#host-reception-venue.form-control(name='hostReceptionVenue' type='text', placeholder='Your mom\'s basement')
+									input#host-reception-venue.form-control(name='hostReceptionVenue' type='text', placeholder='Your mom\'s basement', required='true')
 							.col-md-3.col-sm-3.col-xs-3
 								.form-group
 									label(for='host-reception-time') Time
-									input#host-reception-time.form-control(name='hostReceptionTime' type='time', placeholder='h(h):mm PM/AM')
+									input#host-reception-time.form-control(name='hostReceptionTime' type='time', placeholder='h(h):mm PM/AM', required='true')
 					.form-group
 						label(for='host-wedding-site') Wedding Site
-						input#host-wedding-site.form-control(name='hostWeddingSite' type='url', placeholder='URL')
+						input#host-wedding-site.form-control(name='hostWeddingSite' type='url', placeholder='URL', required='true')
 					.form-spacer
 					input#host-landing-page-submit-btn.btn.btn-primary.btn-lg(type='submit')

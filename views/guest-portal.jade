@@ -1,5 +1,31 @@
 extends layout
 
+block head-scripts
+	link(rel='stylesheet', type='text/css', href='/style_sheets/user_portal.css')
+
+block navbar
+	.navbar-collapse.navbar-right
+		ul.nav.navbar-nav
+			li.dropdown
+				a.dropdown-toggle(href='#', data-toggle='dropdown', role='button') Menu
+					span.caret
+				ul.dropdown-menu(role='menu')
+					li
+						a(href='#') My Wedding
+					li
+						a(href='#') Messages
+					li
+						a(href='#') Notifications
+					li.divider
+					li
+						a(href='#', data-toggle='modal') Update Profile Info
+					li.divider
+					li
+						a.text-warning(href='/logout') Logout
+					li
+						a.text-warning(href='#', data-toggle='modal') Suggest to Cancel the Wedding&nbsp;
+							span.glyphicon.glyphicon-warning-sign
+
 block content
 	//- modal for suggesting to cancel the wedding
 	#guest-cancel-wedding.modal.fade(tabindex='-1', role='dialog', aria-labelledby='guestSuggestToCancelWedding', aria-hidden='true')
@@ -45,15 +71,17 @@ block content
 						.modal-footer
 							button.btn.btn-default(type='button', data-dismiss='modal') Cancel
 							button#guest-portal-update-info.btn.btn-primary(type='button') Update
-			.container
+			.container.user-portal-container
 				.row
 					//- area for WeddingGuest.profilePic
-					.col-md-4.guest-portal-display-window
+					.col-md-4.col-sm-4
+						.user-portal-prof-pic
+							img(src='#{user.profilePic} + width=250&height=250' )
 					//- area for WeddingGuest text info
-					.col-md-8
+					.col-md-8.col-sm-8
 						h2.middle.btm-spacer My Information
 						.row
-							.col-md-12
+							.col-md-12.col-sm-12
 								h4.guest-friends-of Coming for:
 								h4.guest-background-story How you know them:
 								h4.guest-wedding-story Your best story about the couple:

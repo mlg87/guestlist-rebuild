@@ -28,10 +28,20 @@ app.get('/login', indexController.login);
 app.get('/guest-registration', indexController.guestReg);
 app.get('/host-registration', indexController.hostReg);
 
+app.post('/guest-reg-form', portalController.guestRegister);
+app.post('/host-reg-form', portalController.hostRegister);
+
 
 app.post('/userlogin', portalController.userPortal);
-// is scope for facebook where i require what i want to get from fb?
-app.get('/auth/facebook', passport.authenticate('facebook', {scope: 'email'}));
+// is scope for facebook where i require what i want to get from fb
+app.get('/auth/facebook', passport.authenticate('facebook', {scope: ['email', 'user_photos']}));
+app.get('/auth/facebook/callback', passport.authenticate('facebook', {
+	successRedirect: '/guest-portal',
+	failureRedirect: '/login'
+}));
+
+// portalController.fbAuth
+
 // ensureAuthenticated protects routes if a given user is not logged in
 // this needs to come before the portals so user's have to be logged in
 app.use(passportConfig.ensureAuthenticated);

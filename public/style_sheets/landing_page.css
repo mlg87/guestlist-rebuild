@@ -34,11 +34,10 @@
 
 .landing-text-container {
   background-color: rgba(0, 0, 0, .7);
-  border-radius: 20px;
   padding: 50px;
   text-shadow: none;
   text-align: center;
-  margin-top: 250px;
+  margin-top: 200px;
 }
 
 .modal-btn {

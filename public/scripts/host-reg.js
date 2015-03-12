@@ -12,6 +12,7 @@ $(document).on('ready', function() {
 				firstName: $('#host-first-name').val(),
 				lastName: $('#host-last-name').val(),
 				email: $('#host-email').val(),
+				password: $('#host-password').val(),
 				age: $('#host-age').val(),
 				type: $('#host-type').val(),
 				fianceFirstName: $('#host-fiance-first-name').val(),

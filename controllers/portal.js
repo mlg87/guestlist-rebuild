@@ -4,23 +4,50 @@
 
 var mongoose = require('mongoose');
 var schema = require('../models/schemas.js');
-var user = require('../models/user.js');
+var User = require('../models/user.js');
 var passport = require('passport');
 
 var portalController = {
-	guestRegister: function(req, res) {
+	guestRegister: function(req, res, next) {
 		data = req.body;
 		console.log(data);
-		var newGuest = new schema.Guest(req.body);
+
+		User.findOne({email: data.guestEmail}, function(err, user) {
+			if(err) return next(err);
+			if(!user) {
+				var newUser = new User({
+					role: 'guest',
+					firstName: data.guestFirstName,
+					lastName: data.guestLastName,
+					email: data.guestEmail,
+					password: data.guestPassword,
+					age: data.guestAge,
+					profilePic: data.guestProfilePic,
+					// still need to figure out how to add them to a specific wedding party
+					hometown: data.guestHometown,
+					guestFriendsOf: data.guestFriendsOf,
+					guestBackgroundStory: data.guestBackgroundStory,
+					guestWeddingStory: data.guestWeddingStory
+				});
+				newUser.save(function(err, user) {
+					if(err) console.log('there was an error in guestRegister: ', err);
+					console.log('added user: ', newUser);
+					res.redirect('/guest-portal');
+				});
+			}
+		});
+
+		/*var newGuest = new schema.Guest(req.body);
 		newGuest.save(function(err) {
 			if (err) console.log(err);
 			res.redirect('/guest-portal');
-		});
+		});*/
 	},
 
+	// might not need this now that passport has been implemented
 	guestLoggedIn: function(req, res) {
 		console.log(schema.Guest.findOne());
-		res.render('guest-portal');
+		res.render('guest-portal', {user: req.user});
 	},
 
 	hostRegister: function(req, res) {
@@ -33,6 +60,7 @@ var portalController = {
 		});
 	},
 
+	// might not need this either
 	hostLoggedIn: function(req, res) {
 		console.log(schema.Host.findOne());
 		res.render('host-portal');
@@ -53,7 +81,7 @@ var portalController = {
 				if(err) return next(err);
 				// user has successfully logged in
 				console.log('this is a user.role for a successfully logged in user:', user.role);
-				return res.redirect('/guest-portal');
+				return res.redirect('/guest-portal', {user: req.user});
 			});
 		}) (req, res, next);
 	},
@@ -63,6 +91,13 @@ var portalController = {
 		req.logout();
 		console.log('user successfully logged out:', userToLogOut);
 		res.redirect('/');
+	},
+
+	fbAuth: function(req, res) {
+		console.log('res: ', res);
+		app.use('/guest-portal', function(req, res) {
+			res.redirect()
+		});
 	},
 
 	/////////////////

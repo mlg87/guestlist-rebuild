@@ -8,6 +8,9 @@
     darker-gray: 424A4D (66, 74, 77)
     gray: #8B9CA4
     clouds: #ecf0f1
+    darker clouds: #717171
+    facebook: #4a6ea9
+    twitter: #5ea9dd
 
  */
 
@@ -39,6 +42,7 @@ OVERWRITING BOOTSTRAP DEFAULTS
   border-radius: 0px;
   /* this was the only way to get rid of rounded corners on the selects */
   -webkit-appearance: none;
+  box-shadow: none;
 }
 
 
@@ -107,6 +111,10 @@ UTILITY CLASSES
   padding: 20px 0 20px;
 }
 
+.btm-spacer-clean {
+  padding: 20px 0 20px;
+}
+
 .middle {
   text-align: center;
 }
@@ -144,6 +152,11 @@ UTILITY CLASSES
   border-bottom: 1px solid #8B9CA4;
 }
 
+.form-spacer-clean {
+  width: 100%;
+  margin: 30px 0 30px;
+}
+
 .form-fieldset {
   margin-top: 40px;
 }
@@ -152,6 +165,115 @@ UTILITY CLASSES
   font-style: italic;
   color: #3498db;
 }
+
+.input-cleaner {
+  border: none;
+  background-color: #ecf0f1;
+  text-align: center; 
+}
+
+.input-cleaner:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+
+}
+
+.form-sub-clean {
+  background-color: #fff;
+  border: 1px solid #3498db;
+  color: #3498db;
+  margin: auto;
+  display: block;
+  margin-top: 20px;
+}
+
+.form-sub-clean:hover {
+  color: #21628D;
+  border-color: #21628D;
+}
+
+.standalone-form {
+  background-color: #ecf0f1;
+}
+
+.form-header {
+  background-color: #3498db;
+  color: #fff;
+}
+
+
+/*******************************************************
+
+SOCIAL LOGIN
+
+*******************************************************/
+
+#social-links {
+  margin: auto;
+  padding-bottom: 30px;
+  /*background: #000000;*/
+  overflow: hidden;
+  width: 240px;
+}
+
+#social-links ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 0;
+}
+
+#social-links ul li {
+  width: 250px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-top: 20px;
+}
+/*#social-links ul li span.ifacebook,
+#social-links ul li span.itwitter {
+  display: inline-table;
+  width: 41px;
+  text-align: center;
+}*/
+
+#social-links ul li span.ifacebook { 
+  background: #354f88;
+}
+
+#social-links ul li span.itwitter { 
+  background: #40a2d1;
+}
+
+#social-links ul li a.afacebook,
+#social-links ul li a.atwitter {
+  display: inline-table;
+  color: #ffffff;
+  text-decoration: none;
+  margin: 0;
+  width: 200px;
+  height: 40px;
+  text-align: center;
+}
+
+#social-links ul li a.afacebook { 
+  background: #3b5998; 
+  padding: 10px 0 9px 0; 
+}
+
+#social-links ul li a.atwitter { 
+  background: #508FBB; /*#45b0e3 */
+  padding: 10px 0 10px 0; 
+}
+
+
+#social-links ul li a.afacebook:hover { 
+  background: #354f88; 
+}
+
+#social-links ul li a.atwitter:hover { 
+  background: #40a2d1; 
+}
+
 
 
 /*******************************************************
