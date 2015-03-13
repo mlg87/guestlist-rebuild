@@ -1,0 +1,22 @@
+extends layout
+
+block content
+	.container.footer-pusher
+		.row
+			.col-md-6.col-md-offset-3
+				h1 Guest Registration
+				p.btm-divider Too often some of the best times have been spoiled by the random plus one that you found at the last minute. Imagine how much better all of those weddings would've been had you not gone with the girl from accounting. Instead you met Ashley weeks before, hit it off and had a great time over the wedding weekend. After your friends' special day, it's your call if things move to the next step, or if you and your new friend call it what it is. 
+				form#guest-social-registration-form(method='post', action='/guest-social-reg-form')
+					.form-group
+						label(for='guest-friends-of') Friend Of The
+						select#guest-friends-of.form-control(name='guestFriendsOf', required='true')
+							option(value='Bride') Bride
+							option(value='Groom') Groom
+					.form-group
+						label(for='guest-background-story') How You Know The Bride/Groom
+						textarea#guest-background-story.form-control(name='guestBackgroundStory', rows='3', placeholder='Well it all started on the first day of college...', required='true')
+					.form-group
+						label(for='guest-wedding-story') Your Best Story About The Couple
+						textarea#guest-wedding-story.form-control(name='guestWeddingStory', rows='3', placeholder='This one time when we were all at Shotgun Willy\'s...', required='true')
+					.form-spacer
+					input#guest-landing-page-submit-btn.btn.btn-primary.btn-lg(type='submit')

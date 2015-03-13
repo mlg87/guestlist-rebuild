@@ -48,6 +48,17 @@ OVERWRITING BOOTSTRAP DEFAULTS
   background-color: #FFF6E5;
 }
 
+.navbar-btn {
+  background-color: #7ECEFD;
+  border-color: #2185C5;
+  color: #fff;
+}
+
+.navbar-btn:hover {
+  background-color: #2185C5;
+  color: #fff;
+}
+
 .btn {
   border-radius: 2px;
 }
@@ -62,6 +73,11 @@ OVERWRITING BOOTSTRAP DEFAULTS
 
 .btn-danger {
   background-color: #FF7F66;
+  border-color: #d43f3a;
+}
+
+.btn-danger:hover {
+  background-color: #d43f3a;
 }
 
 .form-control {
@@ -257,7 +273,7 @@ p.headline-body {
   padding-top: 5px;
 }
 
-.profile-header {
+.portal-header {
   text-align: center;
   border-bottom: 1px solid #8B9CA4;
   padding: 20px 0 20px;
@@ -276,7 +292,7 @@ SOCIAL LOGIN
 .social-links {
   margin: auto;
   overflow: hidden;
-  width: 250px;
+  width: 260px;
   margin-top: 20px;
 }
 
@@ -287,7 +303,7 @@ SOCIAL LOGIN
 }
 
 .social-links ul li {
-  width: 240px;
+  width: 250px;
   font-size: 14px;
   text-transform: uppercase;
   text-align: center;
@@ -338,24 +354,7 @@ SOCIAL LOGIN
 .tw-login-btn:hover {
   color: #5ea9dd;
 }
-/*#social-links ul li span.ifacebook,
-#social-links ul li span.itwitter {
-  display: inline-table;
-  width: 41px;
-  text-align: center;
-}*/
 
-
-/*#social-links ul li a.afacebook,
-#social-links ul li a.atwitter {
-  display: inline-table;
-  color: #fff;
-  text-decoration: none;
-  margin: 0;
-  width: 200px;
-  height: 40px;
-  text-align: center;
-}*/
 
 
 

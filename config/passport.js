@@ -16,7 +16,8 @@ var user = new User({
 	lastName: 'Quest',
 	email: 'johnnyquest@gmail.com',
 	password: 'test',
-	role: 'guest'
+	role: 'guest',
+	profilePic: 'http://thestalkingmoon.weebly.com/uploads/1/1/5/4/11544757/3616540_orig.png?303'
 });
 
 user.save(function(err, user) {
@@ -122,7 +123,8 @@ var fbStrategy = new FacebookStrategy({
 				lastName: profile.name.familyName,
 				email: profile.emails[0].value,
 				hometown: profile.location,
-				profilePic: "https://graph.facebook.com/" + profile.id + "/picture?" //make sure to always add back in width=200&height=200
+				profilePic: "https://graph.facebook.com/" + profile.id + "/picture?", //make sure to always add back in width=200&height=200
+				incomplete: true
 			});
 			console.log('this is what \'user\' is:', user);
 			console.log('this is the err from fbStrategy, but out of save: ', err);

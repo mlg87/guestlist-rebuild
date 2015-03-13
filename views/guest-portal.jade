@@ -14,7 +14,9 @@ block navbar
 					span.caret
 				ul.dropdown-menu(role='menu')
 					li
-						a(href='#') My Wedding
+						a(href='#') My Weddings
+					li
+						a(href='/profile/#{user._id}') My Profile
 					li
 						a(href='#') Messages
 					li
@@ -27,12 +29,12 @@ block navbar
 						a.text-warning(href='/logout') Logout
 					li.divider
 					li
-						a.text-warning(href='#', data-toggle='modal') Suggest to Cancel the Wedding&nbsp;
+						a.text-warning(href='#guest-cancel-wedding', data-toggle='modal') Suggest to Cancel the Wedding&nbsp;
 							span.glyphicon.glyphicon-warning-sign
 
 block content
 	//- modal for suggesting to cancel the wedding
-	#guest-cancel-wedding.modal.fade(tabindex='-1', role='dialog', aria-labelledby='guestSuggestToCancelWedding', aria-hidden='true')
+	#guest-cancel-wedding.modal.fade(tabindex='-1', role='dialog')
 				.modal-dialog
 					.modal-content
 						.modal-header
@@ -41,52 +43,78 @@ block content
 							h4.modal-title Seriously?
 						.modal-body
 							p Come on, you didn&apos;t really think that we would let you make a suggestion to cancel the wedding? Did you? That would be the worst feature conceived. Not to mention, we bet you&apos;d regret it when you&apos;re sober tomorrow, Derek.
-							p.quote-src-right - GuestList Team
-			#user-edit-info-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='editWeddingInfo', aria-hidden='true')
-				.modal-dialog
-					.modal-content
-						.modal-header
-							button.close(type='button', data-dismiss='modal', aria-label='Close')
-								span(aria-hidden='true') &times;
-							h4.modal-title Profile Information
-						.modal-body
-							form#guest-update-info(method='post', action='/guest-update-info')
-								.form-group
-									label(for='guest-profile-pic') Profile Picture (square image at least 250px x 250px)
-									input#guest-profile-pic.form-control(type='text', name='profilePic', placeholder='URL')
-								.form-group
-									label(for='guest-hometown') Hometown
-									input#guest-hometown.form-control(type='text', name='hometown', placeholder='City')
-								.form-group
-									label(for='guest-age') Age
-									input#guest-age.form-control(type='number', name='age' placeholder='##', min='18', max='55')
-								.form-group
-									label(for='guest-friends-of') Friend Of The
-									select#guest-friends-of.form-control(name='friendsOf')
-										option(value='Bride') Bride
-										option(value='Groom') Groom
-								.form-group
-									label(for='guest-background-story') How You Know The Bride/Groom
-									textarea#guest-background-story.form-control(rows='3', name='backgroundStory', placeholder='Well it all started on the first day of college...')
-								.form-group
-									label(for='guest-wedding-story') Your Best Story About The Couple
-									textarea#guest-wedding-story.form-control(rows='3', name='weddingStory', placeholder="This one time when we were all at Shotgun Willy's...")
-								input.btn.btn-primary(type='submit' value='Update')
-			.container.user-portal-container
-				.row.main-row
-					//- area for WeddingGuest.profilePic
-					.col-md-3.col-sm-4
-						h2.profile-header #{user.firstName}
-						.user-portal-prof-pic
-							img(src='#{user.profilePic} + width=250&height=250' )
-					//- area for WeddingGuest text info
-					.col-md-8.col-sm-7.col-md-offset-1.col-sm-offset-1
-						h2.profile-header My Information
-						.row
-							.col-md-12.col-sm-12
-								h4.muted-label Coming for the:
-									p.user-info #{user.guestFriendsOf}
-								h4.muted-label How you know them:
-									p.user-info #{user.guestBackgroundStory}
-								h4.muted-label Your best story about the couple:
-									p.user-info #{user.guestWeddingStory}
+							p.quote-src-right - Plus1 Team
+	#user-edit-info-modal.modal.fade(tabindex='-1', role='dialog')
+		.modal-dialog
+			.modal-content
+				.modal-header
+					button.close(type='button', data-dismiss='modal', aria-label='Close')
+						span(aria-hidden='true') &times;
+					h4.modal-title Profile Information
+				.modal-body
+					form#guest-update-info(method='post', action='/guest-update-info')
+						unless user.fbId
+							.form-group
+								label(for='guest-profile-pic') Profile Picture (square image at least 250px x 250px)
+								input#guest-profile-pic.form-control(type='text', name='profilePic', placeholder='URL')
+						.form-group
+							label(for='guest-hometown') Hometown
+							input#guest-hometown.form-control(type='text', name='hometown', placeholder='City')
+						.form-group
+							label(for='guest-age') Age
+							input#guest-age.form-control(type='number', name='age' placeholder='##', min='18', max='55')
+						.form-group
+							label(for='guest-friends-of') Friend Of The
+							select#guest-friends-of.form-control(name='friendsOf')
+								option(value='Bride') Bride
+								option(value='Groom') Groom
+						.form-group
+							label(for='guest-background-story') How You Know The Bride/Groom
+							textarea#guest-background-story.form-control(rows='3', name='backgroundStory', placeholder='Well it all started on the first day of college...')
+						.form-group
+							label(for='guest-wedding-story') Your Best Story About The Couple
+							textarea#guest-wedding-story.form-control(rows='3', name='weddingStory', placeholder="This one time when we were all at Shotgun Willy's...")
+						input.btn.btn-primary(type='submit' value='Update')
+	if user.fbId && user.incomplete === true
+		.container.social-reg
+			h2 Thanks for Registering for Plus1
+			h4 Please take a few moments to tell us a little bit more about yourself.
+			form#social-reg-update(method='post', action='/guest-update-info')
+				.form-group
+					label(for='guest-hometown') Hometown
+					input#guest-hometown.form-control(type='text', name='hometown', placeholder='City')
+				.form-group
+					label(for='guest-age') Age
+					input#guest-age.form-control(type='number', name='age' placeholder='##', min='18', max='55')
+				.form-group
+					label(for='guest-friends-of') Friend Of The
+					select#guest-friends-of.form-control(name='friendsOf')
+						option(value='Bride') Bride
+						option(value='Groom') Groom
+				.form-group
+					label(for='guest-background-story') How You Know The Bride/Groom
+					textarea#guest-background-story.form-control(rows='3', name='backgroundStory', placeholder='Well it all started on the first day of college...')
+				.form-group
+					label(for='guest-wedding-story') Your Best Story About The Couple
+					textarea#guest-wedding-story.form-control(rows='3', name='weddingStory', placeholder="This one time when we were all at Shotgun Willy's...")
+				input.btn.btn-primary(type='submit' value='Update')
+
+	.container.user-portal-container
+		.row.main-row
+			.col-md-3.col-sm-4
+				h2.portal-header #{user.firstName}
+				.user-portal-prof-pic
+					unless user.fbId
+						img(src='#{user.profilePic}')
+					if user.fbId
+						img(src='#{user.profilePic} + width=250&height=250')
+			.col-md-8.col-sm-7.col-md-offset-1.col-sm-offset-1
+				h2.portal-header My Information
+				.row
+					.col-md-12.col-sm-12
+						h4.muted-label Coming for the:
+							p#friendsOf.user-info #{user.guestFriendsOf}
+						h4.muted-label How you know them:
+							p#backgroundStory.user-info #{user.guestBackgroundStory}
+						h4.muted-label Your best story about the couple:
+							p#weddingStory.user-info #{user.guestWeddingStory}

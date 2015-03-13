@@ -90,3 +90,29 @@
   font-size: 2em;
   margin-top: 20px;
 }
+
+
+/*******************************************************
+
+MEDIA QUERIES
+
+*******************************************************/
+
+@media (max-width: 768px) {
+  body {
+    padding-top: 100px; /* required for bootstrap sticky nav */
+  } 
+  .landing-text-container {
+    margin-top: 75px;
+  }
+  .mega-headline {
+    font-size: 2em;
+  }
+  .headline-body {
+    font-size: .5em;
+  }
+  .btn-landing {
+    width: 200px;
+    font-size: 1.5em;
+  }
+}

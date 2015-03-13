@@ -3,13 +3,13 @@ extends layout
 block head-scripts
 	link(rel='stylesheet', type='text/css', href='/style_sheets/user_reg.css')
 
-block navbar
-	unless user
-		a(href='/login')
-			button#landing-login.btn.btn-default.navbar-btn.navbar-right(type='button') Login
-	if user
-		a(href='/logout')
-			button.btn.btn-danger.navbar-btn.navbar-right(type='button') Logout
+//- block navbar
+//- 	unless user
+//- 		a(href='/login')
+//- 			button#landing-login.btn.btn-default.navbar-btn.navbar-right(type='button') Login
+//- 	if user
+//- 		a(href='/logout')
+//- 			button.btn.btn-danger.navbar-btn.navbar-right(type='button') Logout
 
 block content
 	.container.footer-pusher
@@ -72,7 +72,7 @@ block content
 							.col-md-6.col-sm-6.col-xs-6
 								.form-group
 									label(for='host-wedding-time') Time
-									input#host-wedding-time.form-control(name='hostWeddingTime' type='time', placeholder='h(h):mm PM/AM', required='true')
+									input#host-wedding-time.form-control(name='hostWeddingTime' type='time', required='true')
 					fieldset.form-fieldset
 						legend Reception Info
 						.row
@@ -83,7 +83,7 @@ block content
 							.col-md-3.col-sm-3.col-xs-3
 								.form-group
 									label(for='host-reception-time') Time
-									input#host-reception-time.form-control(name='hostReceptionTime' type='time', placeholder='h(h):mm PM/AM', required='true')
+									input#host-reception-time.form-control(name='hostReceptionTime' type='time', required='true')
 					.form-group
 						label(for='host-wedding-site') Wedding Site
 						input#host-wedding-site.form-control(name='hostWeddingSite' type='url', placeholder='URL', required='true')

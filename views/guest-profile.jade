@@ -1,0 +1,76 @@
+extends layout
+
+block head-scripts
+	link(rel='stylesheet', type='text/css', href='/style_sheets/user_profile.css')
+
+block navbar
+	.navbar-collapse.navbar-right
+		ul.nav.navbar-nav
+			li
+				a(href='#message-modal', data-toggle='modal') Message #{user.firstName}
+			li.dropdown
+				a.dropdown-toggle(href='#', data-toggle='dropdown', role='button') Menu
+					span.caret
+				ul.dropdown-menu(role='menu')
+					li
+						a(href='#') My Weddings
+					li
+						a(href='/profile/#{user._id}') My Profile
+					li
+						a(href='#') Messages
+					li
+						a(href='#') Notifications
+					li.divider
+					li
+						a(href='/guest-portal') My Portal
+					li.divider
+					li
+						a.text-warning(href='/logout') Logout
+
+block content
+	#message-modal.modal.fade(tabindex='-1', role='dialog')
+			.modal-dialog
+					.modal-content
+						.modal-header
+							button.close(type='button', data-dismiss='modal', aria-label='Close')
+								span(aria-hidden='true') &times;
+							h4.modal-title Send #{user.firstName} a Message
+						.modal-body
+							form(method='post', action='/profile-msg')
+								.form-group
+									label(for='profile-msg-body') Message:
+									textarea#profile-msg-body.form-control(rows='3', name='profile-msg-body', placeholder="Hey sexy. What's your favorite position?")
+								input.btn.btn-primary(type='submit', value='Send')
+	.container
+			.row
+				.col-md-6.col-md-offset-3
+					.user-portal-prof-pic
+						unless user.fbId
+							img(src='#{user.profilePic}')
+						if user.fbId
+							img(src='#{user.profilePic} + width=250&height=250')
+					h1.portal-header #{user.firstName}
+			.container
+				.row.main-row
+					.col-md-6.col-sm-6.col-xs-12.col-md-offset-3.col-sm-offset-3
+						.row
+							.col-md-4.col-sm-4
+								h4.prof-info-hometown Hometown:
+									p.user-info #{user.hometown}
+							.col-md-4.col-sm-4
+								h4.prof-info-age Age:
+									p.user-info #{user.age}
+							.col-md-4.col-sm-4
+								h4.prof-info-friend Friends Of:
+									p.user-info #{user.guestFriendsOf}
+						.row
+							.col-md-12
+								h4.prof-info-background-story How They Met:
+									p.user-info #{user.guestBackgroundStory}
+							.col-md-12
+								h4.prof-info-wedding-story Best Story About The Couple:
+									p.user-info #{user.guestWeddingStory}
+
+				
+
+				

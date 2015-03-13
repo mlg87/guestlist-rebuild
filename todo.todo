@@ -2,9 +2,9 @@ Landing-page functionality:
  ✔ click on 'guest' or 'host' button takes user to a new registration page with a form displayed depending on which they chose @done (15-02-27 11:54)
 
 Registration Forms:
- ☐ after a user fills out their form, take them to their given portal
-   ☐ create a new document in the 'users' collection
-   ☐ load portal with their info
+ ✔ after a user fills out their form, take them to their given portal @done (15-03-13 10:13)
+   ✔ create a new document in the 'users' collection @done (15-03-13 10:13)
+   ✔ load portal with their info @done (15-03-13 10:13)
  ✔ Change the 'rehearsal dinner' items to 'reception' and change the plain venue to 'ceremony venue' @done (15-03-09 22:35)
 
 Login Page:   
@@ -15,12 +15,13 @@ Login Page:
 
 NavBar:   
  ☐ render a different navbar based on who is logged in
- ☐ render a logout button once a user is logged in
+ ✔ render a logout button once a user is logged in @done (15-03-13 10:13)
 
 Questions:
  ☐ how do i display a particular navbar depending on who is logged in? /// [if(user.role = 'guest') OR if(user.role= 'host')]
 
  ☐ how should i store the date in the db?
+ ☐ if i send someone an invite and they choose to sign in with fb or twitter, how do i designate that they are in fact a guest and put them into a given wedding party?
 
 Cool features:
  ☐ create a better method for blurring the background when a modal comes up
@@ -28,8 +29,8 @@ Cool features:
  ☐ use jQueryValidate for form validation
 
 User Authentication:   
- ☐ learn 'sessions'
- ☐ learn 'passport'
-   ☐ Do I need to use 'connect-flash' for the flash messages?
+ ✔ learn 'sessions' @done (15-03-13 10:13)
+ ✔ learn 'passport' @done (15-03-13 10:13)
+   ✔ Do I need to use 'connect-flash' for the flash messages? @done (15-03-13 10:13)
  ☐ learn 'sockets'
  ☐ 

@@ -24,7 +24,24 @@ block content
 						span(aria-hidden='true') &times;                   
 					h4#myModalLabel.modal-title Register for Plus1
 				.modal-body
-					h3.middle Register As
+					.social-links
+						ul
+							li.social-container
+								a(href='/auth/facebook')
+									button.btn-primary.social-login-btn.fb-login-btn
+										span
+										img(src='./imgs/fb.png')
+										p.social-text Register with Facebook
+							li.social-container
+								a(href='/auth/twitter')
+									button.social-login-btn.tw-login-btn
+										span
+											img(src='./imgs/twitter.png')
+											p.social-text Register with Twitter
+					.form-spacer-clean
+					h4.middle OR
+					.form-spacer-clean
+					h5.middle Register As
 					.row
 						.col-md-6
 							a(href='/guest-registration').btn.btn-primary.btn-lg.modal-btn Guest
@@ -40,4 +57,4 @@ block content
 					p.headline-body to the same wedding and let&apos;s you connect before 
 					p.headline-body you arrive. <em>Till tomorrow do you part</em>.
 					//- button trigger for registration modal
-					button#landing-page-registration.btn.btn-primary.btn-landing(data-toggle='modal', data-target='#registrationModal') Register for PLus1
+					button#landing-page-registration.btn.btn-primary.btn-landing(data-toggle='modal', data-target='#registrationModal') Register for Plus1

@@ -8,6 +8,10 @@ var bcrypt = require('bcrypt');
 var userSchema = mongoose.Schema({
 	// role is 'host' or 'guest'
 	role: String,
+	incomplete: {
+		type: Boolean,
+		default: false
+	},
 	fbId: {
 		type: String
 	},
@@ -46,7 +50,10 @@ var userSchema = mongoose.Schema({
 	hostReceptionVenue: String,
 	hostReceptionTime: String,
 	hostSite: String,
+	// only will contain guests
 	party: [userSchema],
+	// only contain host ids
+	myWeddings: [userSchema],
 	/////////////////
 	// GUEST DATA //
 	/////////////////
