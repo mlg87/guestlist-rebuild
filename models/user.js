@@ -9,8 +9,7 @@ var userSchema = mongoose.Schema({
 	// role is 'host' or 'guest'
 	role: String,
 	fbId: {
-		type: String,
-		unique: true
+		type: String
 	},
 	// general data
 	firstName: {

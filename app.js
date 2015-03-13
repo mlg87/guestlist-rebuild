@@ -31,6 +31,8 @@ app.get('/host-registration', indexController.hostReg);
 app.post('/guest-reg-form', portalController.guestRegister);
 app.post('/host-reg-form', portalController.hostRegister);
 
+app.post('/guest-update-info', portalController.guestUpdateInfo);
+
 
 app.post('/userlogin', portalController.userPortal);
 // is scope for facebook where i require what i want to get from fb

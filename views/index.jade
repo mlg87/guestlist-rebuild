@@ -30,11 +30,14 @@ block content
 							a(href='/guest-registration').btn.btn-primary.btn-lg.modal-btn Guest
 						.col-md-6
 							a(href='/host-registration').btn.btn-primary.btn-lg.modal-btn Host
-	.blue-overlay.bg   
-		.jumbotron
+	.blue-overlay.bg
+		.jumbotron.landing-overlay
 			.container
 				.landing-text-container
-					h2 Why Should the Bride & Groom Have All the Fun?         
-					p Plus1 puts you in touch with other singles heading to the same wedding and let&apos;s you connect before you arrive. Till tomorrow do you part.
+					h2.mega-headline Why Should the Bride & Groom 
+					h2.mega-headline Have All the Fun?         
+					p.headline-body Plus1 puts you in touch with other singles heading 
+					p.headline-body to the same wedding and let&apos;s you connect before 
+					p.headline-body you arrive. <em>Till tomorrow do you part</em>.
 					//- button trigger for registration modal
-					button#landing-page-registration.btn.btn-primary.btn-lg(data-toggle='modal', data-target='#registrationModal') Register for PLus1
+					button#landing-page-registration.btn.btn-primary.btn-landing(data-toggle='modal', data-target='#registrationModal') Register for PLus1

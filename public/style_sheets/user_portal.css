@@ -1,11 +1,11 @@
 .user-portal-prof-pic {
-	height: 250px;
-	width: 250px;
+	/*height: 250px;*/
+	width: 100%;
 	margin: auto;
 	overflow: hidden;
   border: 5px solid #3498db;
 	border-radius: 100%;
-	
+
 }
 
 .user-portal-prof-pic img{
@@ -13,6 +13,23 @@
 	z-index: -1;
 }
 
-.user-portal-container {
+/*.user-portal-container {
 	margin-top: 50px;
+}*/
+
+
+/*******************************************************
+
+MEDIA QUERIES
+
+*******************************************************/
+
+@media (max-width: 768px) {
+  .user-portal-prof-pic {
+    width: 200px;
+    height: 200px;
+  }
+  .user-portal-name {
+  	border: none;
+  }
 }

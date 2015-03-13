@@ -32,7 +32,10 @@ var portalController = {
 				newUser.save(function(err, user) {
 					if(err) console.log('there was an error in guestRegister: ', err);
 					console.log('added user: ', newUser);
-					res.redirect('/guest-portal');
+					req.login(user, function(err) {
+						if(err) console.log('there was an err, horray! ', err);
+						res.redirect('/guest-portal');
+					});
 				});
 			}
 		});
@@ -42,6 +45,26 @@ var portalController = {
 			if (err) console.log(err);
 			res.redirect('/guest-portal');
 		});*/
+	},
+
+	guestUpdateInfo: function(req, res) {
+		var data = req.body;
+		var id = req.user._id;
+		console.log('this is req.body in guestUpdateInfo: ', req.body);
+		User.findById(id, function(err, user) {
+			if (err) return handleErr(err);
+			user.profilePic = data.profilePic || user.profilePic;
+			user.hometown = data.hometown || user.hometown;
+			user.age = data.age || user.age;
+			user.guestFriendsOf = data.friendsOf || user.guestFriendsOf;
+			user.guestBackgroundStory = data.backgroundStory || user.guestBackgroundStory;
+			user.guestWeddingStory = data.weddingStory || user.guestWeddingStory;
+			user.save(function(err, user) {
+				if(err) return handleErr(err);
+				res.send(user);
+			});
+		});
+		// res.redirect('/guest-portal');
 	},
 
 	// might not need this now that passport has been implemented

@@ -8,26 +8,33 @@ block content
 			.col-md-6.col-sm-8.col-md-offset-3.col-sm-offset-2
 				.standalone-form
 					h1.middle.btm-spacer.form-header Login
-					form(method='post', action='/userlogin')
+					.social-links
+						ul
+							li.social-container
+								a(href='/auth/facebook')
+									button.btn-primary.social-login-btn.fb-login-btn
+										span
+										img(src='./imgs/fb.png')
+										p.social-text Sign in with Facebook
+							li.social-container
+								a(href='/auth/twitter')
+									button.social-login-btn.tw-login-btn
+										span
+											img(src='./imgs/twitter.png')
+											p.social-text Sign in with Twitter
+					.form-spacer-clean
+					h4.middle OR
+					.form-spacer-clean
+					form.login-submit(method='post', action='/userlogin')
 						//- this inputs name has to be 'username' for passport to work
 						input.form-control.input-cleaner(name='username', type='email', placeholder='Email')
 						input.form-control.input-cleaner(name='password', type='password', placeholder='Password')
 						input.form-sub-clean.btn.btn-lg(type='submit')
 						.row
 							.col-md-4.col-sm-4.col-xs-4.col-md-offset-4.col-sm-offset-4.col-xs-offset-4
-					.form-spacer-clean
-					h4.middle OR
-					.form-spacer-clean
-					#social-links
-						ul
-							li
-								span.ifacebook
-									img(src='./imgs/fb.png')
-								a.afacebook(href='/auth/facebook') Sign in with Facebook
-							li
-								span.itwitter
-									img(src='./imgs/twitter.png')
-								a.atwitter(href='#') Sign in with Twitter
+					
+					
+					
 					
 
 
