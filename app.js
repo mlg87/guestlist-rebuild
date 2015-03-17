@@ -12,7 +12,7 @@ var passportConfig = require('./config/passport');
 var session = require('express-session');
 
 // use the 'plus1' db
-mongoose.connect('mongodb://localhost/plus1');
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/plus1');
 
 var app = express();
 app.set('view engine', 'jade');
