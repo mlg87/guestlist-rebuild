@@ -20,4 +20,11 @@ $(document).ready(function() {
     $('.orig-guest-email-field').last().after(newEmail.fadeIn());
     newEmailInput.focus();
   });
+
+  $('#host-invite-form').on('submit', function(e) {
+  	e.preventDefault();
+  	$.post('/guest-em-invite', $(this).serialize(), function(data) {
+  			console.log(data);
+  	});
+  });
 });

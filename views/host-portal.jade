@@ -85,7 +85,7 @@ block content
 								span(aria-hidden='true') &times;
 							h4.modal-title Invite Singles to Your GuestList
 						.modal-body
-							form(method='post', action='/guest-em-invite')
+							form#host-invite-form(method='post', action='/guest-em-invite')
 								.form-group.orig-guest-email-field
 									label(for='guest-email') Guest email:
 									input#guest-invite-em-ad.form-control(type='email', placeholder='singlefriend@gmail.com', name='guestEmail[]')
