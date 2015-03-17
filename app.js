@@ -70,15 +70,6 @@ app.get('/wedding-profile/:_id', profileController.currentWedding);
 // handler for guest email invitation from host
 app.post('/guest-em-invite', portalController.guestInvite);
 
-/////////////////////////////
-// PASSPORT AUTHENTICATION //
-/////////////////////////////
-/*
-
- app.post('/login', passport.authenticate('local', { successRedirect: '/',
-																										failureRedirect: '/login' }));
-*/
-
 app.post('/guest-portal', portalController.userRegister);
 app.post('/host-portal', portalController.userRegister);
 
