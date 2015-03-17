@@ -82,6 +82,7 @@ app.post('/guest-em-invite', portalController.guestInvite);
 app.post('/guest-portal', portalController.userRegister);
 app.post('/host-portal', portalController.userRegister);
 
-var server = app.listen(7160, function() {
+var port = process.env.PORT || 7160;
+var server = app.listen(port, function() {
 	console.log('Express server listening on port ' + server.address().port);
 });
