@@ -18,7 +18,7 @@ var app = express();
 app.set('view engine', 'jade');
 app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public'));
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(session({secret: 'secret key'}));
 app.use(passport.initialize());
@@ -63,6 +63,12 @@ app.post('/host-update-info', portalController.hostUpdateInfo);
 
 // handler for viewing 'my profile' when a user is logged in
 app.get('/profile/:_id', profileController.currentUser);
+
+// handler for viewing a wedding profile page
+app.get('/wedding-profile/:_id', profileController.currentWedding);
+
+// handler for guest email invitation from host
+app.post('/guest-em-invite', portalController.guestInvite);
 
 /////////////////////////////
 // PASSPORT AUTHENTICATION //

@@ -12,8 +12,41 @@ block navbar
 		a(href='/login')
 			button#landing-login.btn.btn-default.navbar-btn.navbar-right(type='button') Login
 	if user
-		a(href='/logout')
-			button.btn.btn-danger.navbar-btn.navbar-right(type='button') Logout
+		if user.role === 'guest'
+			.navbar-collapse.navbar-right
+				ul.nav.navbar-nav
+					li.dropdown
+						a.dropdown-toggle(href='#', data-toggle='dropdown', role='button') Menu
+							span.caret
+						ul.dropdown-menu(role='menu')
+							li
+								a(href='#') My Weddings
+							li
+								a(href='/profile/#{user._id}') My Profile
+							li
+								a(href='#') Messages
+							li
+								a(href='#') Notifications
+							li.divider
+							li
+								a.text-warning(href='/logout') Logout
+	if user
+		if user.role == 'host'
+			.navbar-collapse.navbar-right
+				ul.nav.navbar-nav
+					li.dropdown
+						a.dropdown-toggle(href='#', data-toggle='dropdown', role='button') Menu
+							span.caret
+						ul.dropdown-menu(role='menu')
+							li
+								a(href='/wedding-profile/#{user._id}') My Wedding
+							li
+								a(href='#') Notifications
+							li
+								a(href='/host-portal') My Portal
+							li.divider
+							li
+								a.text-warning(href='/logout') Logout
 
 block content
 	#registrationModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
@@ -39,22 +72,47 @@ block content
 											img(src='./imgs/twitter.png')
 											p.social-text Register with Twitter
 					.form-spacer-clean
-					h4.middle OR
+					h4.form-option OR
 					.form-spacer-clean
-					h5.middle Register As
+					h5.form-option Register As
 					.row
 						.col-md-6
 							a(href='/guest-registration').btn.btn-primary.btn-lg.modal-btn Guest
 						.col-md-6
 							a(href='/host-registration').btn.btn-primary.btn-lg.modal-btn Host
-	.blue-overlay.bg
-		.jumbotron.landing-overlay
-			.container
-				.landing-text-container
-					h2.mega-headline Why Should the Bride & Groom 
-					h2.mega-headline Have All the Fun?         
-					p.headline-body Plus1 puts you in touch with other singles heading 
-					p.headline-body to the same wedding and let&apos;s you connect before 
-					p.headline-body you arrive. <em>Till tomorrow do you part</em>.
-					//- button trigger for registration modal
-					button#landing-page-registration.btn.btn-primary.btn-landing(data-toggle='modal', data-target='#registrationModal') Register for Plus1
+	.container.landing-container
+		.landing-text-container
+			h2.mega-headline Why Should the Bride & Groom 
+			h2.mega-headline Have All the Fun?         
+			p.headline-body Plus1 puts you in touch with other singles heading 
+			p.headline-body to the same wedding and let&apos;s you connect before 
+			p.headline-body you arrive. <em>Till tomorrow do you part</em>.
+			//- button trigger for registration modal
+			button#landing-page-registration.btn.btn-primary.btn-landing(data-toggle='modal', data-target='#registrationModal') Register for Plus1
+	section.landing-video
+		.video-filter
+			video.video-bg(autoplay loop)
+				source(src='/vid/WeddingBG_3.mp4', type='video/mp4')
+	section.landing-intro
+		.container
+			.row
+				.col-md-4.col-sm-4
+					h4 Why Plus1?
+					p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab voluptas error harum. Rerum, soluta unde eius harum. Quo, provident vitae ipsam praesentium tempora, quisquam tempore maxime, a nostrum inventore adipisci!
+				.col-md-4.col-sm-4
+					h4 You don't say!
+					p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium in deserunt voluptates harum ab, debitis ut alias dolor quidem magnam, ducimus amet facere distinctio vero tempore maiores consequatur minus commodi.
+				.col-md-4.col-sm-4
+					h4 I can't believe it!
+					p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus commodi repellat impedit distinctio optio beatae architecto, ullam fugit illo minima recusandae eum, accusantium molestias sint suscipit qui omnis rem, aliquam!
+
+
+		
+
+
+		//- 			.video-filter
+		//- 			video.video-bg(autoplay loop)
+		//- 				source(src='/vid/WeddingBG_3.mp4', type='video/mp4')		
+
+		//- 				.blue-overlay.bg
+		//- .jumbotron.landing-overlay			

@@ -46,9 +46,11 @@
 	z-index: -1;
 }
 
-/*.user-portal-container {
-	margin-top: 50px;
-}*/
+.prof-info {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 200;
+  color: #8B9CA4;
+}
 
 .social-reg {
 	background-color: #ecf0f1;

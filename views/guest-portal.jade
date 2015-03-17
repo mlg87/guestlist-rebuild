@@ -80,23 +80,34 @@ block content
 			h2 Thanks for Registering for Plus1
 			h4 Please take a few moments to tell us a little bit more about yourself.
 			form#social-reg-update(method='post', action='/guest-update-info')
-				.form-group
-					label(for='guest-hometown') Hometown
-					input#guest-hometown.form-control(type='text', name='hometown', placeholder='City')
-				.form-group
-					label(for='guest-age') Age
-					input#guest-age.form-control(type='number', name='age' placeholder='##', min='18', max='55')
-				.form-group
-					label(for='guest-friends-of') Friend Of The
-					select#guest-friends-of.form-control(name='friendsOf')
-						option(value='Bride') Bride
-						option(value='Groom') Groom
+				.row
+					.col-md-6.col-sm-6.col-xs-6
+						.form-group
+							label(for='guest-hometown') Hometown
+							input#guest-hometown.form-control(type='text', name='hometown', placeholder='City' required='true')
+					.col-md-6.col-sm-6.col-xs-6
+						.form-group
+							label(for='guest-age') Age
+							input#guest-age.form-control(type='number', name='age' placeholder='##', min='18', max='55' required='true')
+				.row
+					.col-md-6.col-sm-6.col-xs-6
+						.form-group
+							label(for='guest-friends-of') Friend Of The
+							select#guest-friends-of.form-control(name='friendsOf' required='true')
+								option(value='Bride') Bride
+								option(value='Groom') Groom
+					.col-md-6.col-sm-6.col-xs-6
+						.form-group
+							label(for='user-role') You are a:
+							select#user-role.form-control(name='userRole' required='true')
+								option(value='guest') Guest
+								option(value='host') Host
 				.form-group
 					label(for='guest-background-story') How You Know The Bride/Groom
-					textarea#guest-background-story.form-control(rows='3', name='backgroundStory', placeholder='Well it all started on the first day of college...')
+					textarea#guest-background-story.form-control(rows='3', name='backgroundStory', placeholder='Well it all started on the first day of college...' required='true')
 				.form-group
 					label(for='guest-wedding-story') Your Best Story About The Couple
-					textarea#guest-wedding-story.form-control(rows='3', name='weddingStory', placeholder="This one time when we were all at Shotgun Willy's...")
+					textarea#guest-wedding-story.form-control(rows='3', name='weddingStory', placeholder="This one time when we were all at Shotgun Willy's..." required='true')
 				input.btn.btn-primary(type='submit' value='Update')
 
 	.container.user-portal-container

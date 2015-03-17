@@ -1,0 +1,138 @@
+extends layout
+
+block head-scripts
+	link(rel='stylesheet', type='text/css', href='/style_sheets/user_profile.css')
+
+block body-scripts
+
+block navbar
+	if user
+		if user.role === 'guest'
+			.navbar-collapse.navbar-right
+				ul.nav.navbar-nav
+					li.dropdown
+						a.dropdown-toggle(href='#', data-toggle='dropdown', role='button') Menu
+							span.caret
+						ul.dropdown-menu(role='menu')
+							li
+								a(href='#') My Weddings
+							li
+								a(href='/profile/#{user._id}') My Profile
+							li
+								a(href='#') Messages
+							li
+								a(href='#') Notifications
+							li.divider
+							li
+								a(href='/guest-portal') My Portal
+							li.divider
+							li
+								a.text-warning(href='/logout') Logout
+							li.divider
+							li
+								a.text-warning(href='#guest-cancel-wedding', data-toggle='modal') Suggest to Cancel the Wedding&nbsp;
+									span.glyphicon.glyphicon-warning-sign
+	if user
+		if user.role == 'host'
+			.navbar-collapse.navbar-right
+				ul.nav.navbar-nav
+					li.dropdown
+						a.dropdown-toggle(href='#', data-toggle='dropdown', role='button') Menu
+							span.caret
+						ul.dropdown-menu(role='menu')
+							li
+								a(href='/wedding-profile/#{user._id}') My Wedding
+							li
+								a(href='#') Notifications
+							li
+								a(href='/host-portal') My Portal
+							li.divider
+							li
+								a.text-warning(href='/logout') Logout
+
+block content
+	.container
+			.row
+					.col-md-12.side-cleanup
+						.user-portal-prof-pic
+							unless user.fbId
+								img(src='#{user.profilePic}')
+							if user.fbId
+								img(src='#{user.profilePic} + width=250&height=250')
+			.container.btm-spacer
+				.row
+					.col-xs-4.col-sm-4.col-md-4
+						h4.prof-info Location:
+							//- this will need to be something different, maybe #{user.myWeddings.findById...}
+							p.user-info #{user.hostWedLocation}
+						h4.prof-info Date:
+							p.user-info #{user.hostWedDate}
+						h4.prof-info Time:
+							p.user-info #{user.hostWedTime}
+					.col-xs-4.col-sm-4.col-md-4
+						h4.prof-info Venue:
+							p.user-info #{user.hostWedVenue}
+						a(href='#{user.hostSite}')
+							button.btn.btn-primary.btn-lg Wedding Site
+					.col-xs-4.col-sm-4.col-md-4
+						h4.prof-info Reception Venue:
+							p.user-info #{user.hostReceptionVenue}
+						h4.prof-info Reception Time:
+							p.user-info #{user.hostReceptionTime}
+			.container
+				.row
+					h2.btm-spacer.middle GuestList
+					.guest-display.btm-spacer
+					h2.btm-spacer.middle Chatter
+					button.btn.btn-primary.btn-lg(data-toggle='modal', data-target='#wedding-page-add-comment-modal') Add to the Chatter
+					.wedding-page-chatter.btm-spacer
+	.container.chatter-msg-tem.chatter-msg.inactive
+		.row
+			.col-md-2.media-left
+			.col-md-10.media-body
+				h4.media-heading TEST
+				p.chatter-body
+				button.btn.btn-primary.btn-small.comment-reply(data-toggle='modal', data-target='#wedding-page-comment-reply') Reply
+				.container
+					.row
+						.chatter-reply-section
+							.container.chatter-reply-tem.chatter-reply.inactive
+								.row
+									.col-md-2.media-left
+									.col-md-10.media-body
+										h4.media-heading
+										p.chatter-body
+										button.btn.btn-primary.btn-small.comment-reply(data-toggle='modal', data-target='#wedding-page-comment-reply') Reply
+										.container
+											.row
+												.chatter-reply-section
+	//- modal for adding a comment to chatter
+	#wedding-page-add-comment-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='inviteGuests', aria-hidden='true')
+			.modal-dialog
+					.modal-content
+						.modal-header
+							button.close(type='button', data-dismiss='modal', aria-label='Close')
+								span(aria-hidden='true') &times;
+							h4.modal-title Let Your Friends Know How You Really Feel
+						.modal-body
+							form(method='post', action='/add-chatter')
+								.form-group
+									label(for='guest-add-chatter-body') Chatter:
+									textarea#guest-add-chatter-body.form-control(rows='4', placeholder='Have you thought this through? I mean, like really thought this through?', name='chatterBody')
+									.form-spacer-clean
+									input.btn.btn-primary(type='submit' value='Add Chatter')
+	#wedding-page-comment-reply.modal.fade(tabindex='-1', role='dialog', aria-labelledby='inviteGuests', aria-hidden='true')
+			.modal-dialog
+					.modal-content
+						.modal-header
+							button.close(type='button', data-dismiss='modal', aria-label='Close')
+								span(aria-hidden='true') &times;
+							h4#wedding-page-comment-reply-heading.modal-title
+						.modal-body
+							form
+								.form-group
+									label(for='guest-add-chatter-body') Reply:
+									textarea#guest-add-chatter-reply-body.form-control(rows='4', placeholder="I can't believe you said that! I am offended.")
+						.modal-footer
+							button.btn.btn-default(type='button', data-dismiss='modal') Cancel
+							button#wedding-page-comment-reply-add.btn.btn-primary(type='button') Add Reply

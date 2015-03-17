@@ -27,6 +27,7 @@ Cool features:
  ☐ create a better method for blurring the background when a modal comes up
  ☐ extend the session cookie to keep users logged in indefinitely
  ☐ use jQueryValidate for form validation
+ ☐ unable to message oneself
 
 User Authentication:   
  ✔ learn 'sessions' @done (15-03-13 10:13)

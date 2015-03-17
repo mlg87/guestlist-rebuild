@@ -5,7 +5,9 @@
 var mongoose = require('mongoose');
 var schema = require('../models/schemas.js');
 var User = require('../models/user.js');
+var TempUser = require('../models/temp-user.js');
 var passport = require('passport');
+var _ = require('underscore');
 
 var portalController = {
 	guestRegister: function(req, res, next) {
@@ -55,6 +57,7 @@ var portalController = {
 			if (err) return handleErr(err);
 			user.profilePic = data.profilePic || user.profilePic;
 			user.hometown = data.hometown || user.hometown;
+			user.role = data.userRole || user.role;
 			user.age = data.age || user.age;
 			user.guestFriendsOf = data.friendsOf || user.guestFriendsOf;
 			user.guestBackgroundStory = data.backgroundStory || user.guestBackgroundStory;
@@ -72,6 +75,38 @@ var portalController = {
 	guestLoggedIn: function(req, res) {
 		console.log(schema.Guest.findOne());
 		res.render('guest-portal', {user: req.user});
+	},
+
+	guestInvite: function(req, res, next) {
+		var data = req.body;
+		var wedding = req.user._id;
+
+		data.guestEmail.forEach(function(el, i, arr) {
+			TempUser.findOne({email: el}, function(err, user) {
+				if(err) return next(err);
+				if(!user) {
+					var invitedUser = new TempUser ({
+						email: el,
+						messages: [{message: data.messageBody}],
+						weddings: [wedding]
+					});
+					invitedUser.save(function(err, user) {
+						if(err) return next(err);
+						// mailgun goes here
+					});
+				}
+				else {
+					user.messages.push({message: data.messageBody});
+					user.weddings.push(wedding);
+					user.save(function(err, user) {
+						if(err) return next(err);
+						// mailgun goes here
+					});
+				}
+			});
+		});
+		
+		res.send(data);
 	},
 
 	hostRegister: function(req, res, next) {
@@ -93,6 +128,7 @@ var portalController = {
 					hostFianceFirstName: data.hostFianceFirstName,
 					hostFianceLastName: data.hostFianceLastName,
 					hostProfilePic: data.hostWeddingLocation,
+					hostWedLocation: data.hostWeddingLocation,
 					hostWedVenue: data.hostWeddingVenue,
 					hostWedDate: data.hostWeddingDate,
 					hostWedTime: data.hostWeddingTime,

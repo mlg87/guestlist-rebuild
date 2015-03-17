@@ -14,6 +14,9 @@ var indexController = {
 	},
 	hostReg: function(req, res) {
 		res.render('host-reg', {user: req.user});
+	},
+	videoTest: function(req, res) {
+		res.render('video_test', {user: req.user});
 	}
 };
 

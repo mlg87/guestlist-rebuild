@@ -2,9 +2,10 @@ extends layout
 
 block head-scripts
 	link(rel='stylesheet', type='text/css', href='/style_sheets/user_portal.css')
+	link(rel='stylesheet', type='text/css', href='/style_sheets/host_portal.css')
 
 block body-scripts
-	script(src='/scripts/guest-portal.js')
+	script(src='/scripts/host-portal.js')
 
 block navbar
 	.navbar-collapse.navbar-right
@@ -14,7 +15,9 @@ block navbar
 					span.caret
 				ul.dropdown-menu(role='menu')
 					li
-						a(href='#') My Wedding
+						a(href='/wedding-profile/#{user._id}') My Wedding
+					li
+						a(href='#host-guest-invite-modal', data-toggle='modal') Invite Guests
 					li
 						a(href='#') Notifications
 					li.divider
@@ -74,6 +77,23 @@ block content
 									label(for='hostSite') Wedding Site
 									input.form-control(type='url', name='hostSite' placeholder='URL')
 								input.btn.btn-primary(type='submit' value='Update')
+	#host-guest-invite-modal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='inviteGuests', aria-hidden='true')
+			.modal-dialog
+					.modal-content
+						.modal-header
+							button.close(type='button', data-dismiss='modal', aria-label='Close')
+								span(aria-hidden='true') &times;
+							h4.modal-title Invite Singles to Your GuestList
+						.modal-body
+							form(method='post', action='/guest-em-invite')
+								.form-group.orig-guest-email-field
+									label(for='guest-email') Guest email:
+									input#guest-invite-em-ad.form-control(type='email', placeholder='singlefriend@gmail.com', name='guestEmail[]')
+								button#guest-invite-additional-email.btn.btn-primary.btn-xs(type='button') Add Another Guest
+								.form-group
+									label(for='guest-invite-message-body') Message:
+									textarea#guest-invite-message-body.form-control(rows='3', name='messageBody') Join the wedding party on Plus1 and get to know the other singles before our big day. Can't wait to see you there.
+								input.btn.btn-primary(type='submit' value='Send')
 	.container
 			.row.main-row
 					.col-md-3.col-sm-4
@@ -88,19 +108,22 @@ block content
 						.row
 							.col-md-4
 								h4.muted-label Location:
-									p.user-info #{user.hostWedLocation}
+									p#wedding-location.user-info #{user.hostWedLocation}
 								h4.muted-label Venue:
-									p.user-info #{user.hostWedVenue}
+									p#wedding-venue.user-info #{user.hostWedVenue}
+								h4.muted-label
+									a(href='#{user.hostSite}')
+										button.btn.btn-primary Wedding Site
 							.col-md-4
 								h4.muted-label Date:
-									p.user-info #{user.hostWedDate}
+									p#wedding-date.user-info #{user.hostWedDate}
 								h4.muted-label Time:
-									p.user-info #{user.hostWedTime}
+									p#wedding-time.user-info #{user.hostWedTime}
 							.col-md-4
 								h4.muted-label Reception Venue:
-									p.user-info #{user.hostReceptionVenue}
+									p#reception-venue.user-info #{user.hostReceptionVenue}
 								h4.muted-label Reception Time:
-									p.user-info #{user.hostReceptionTime}
+									p#reception-time.user-info #{user.hostReceptionTime}
 			.container
 				.row
 					.col-md-4.host-display
