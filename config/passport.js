@@ -9,7 +9,6 @@ var FacebookStrategy = require('passport-facebook').
 	Strategy;
 var User = require('../models/user');
 var fbapi = require('facebook-api');
-var config = require('./_config.js');
 
 // dummy user for local strategy testing
 var user = new User({
@@ -94,9 +93,9 @@ passport.use(localStrategy);
 
 // fb login to app
 var fbStrategy = new FacebookStrategy({
-	clientID: process.env.clientID || config.FacebookKeys.clientID,
-	clientSecret: process.env.clientSecret || config.FacebookKeys.clientSecret,
-	callbackURL: process.env.callbackURL || config.FacebookKeys.callbackURL
+	clientID: process.env.clientID,
+	clientSecret: process.env.clientSecret,
+	callbackURL: process.env.callbackURL
 }, function(accessToken, refreshToken, profile, next) {
 	User.findOne({fbId: profile.id}, function(err, user) {
 		console.log('err inside of findOne fbStrategy:', err);
