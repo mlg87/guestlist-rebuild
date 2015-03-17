@@ -1,4 +1,9 @@
 {
+  "name": "Plus1",
+  "version": "0.0.2",
+  "scripts": {
+    "start": "node app.js"
+  },
   "dependencies": {
     "bcrypt": "^0.8.1",
     "body-parser": "^1",
@@ -6,6 +11,7 @@
     "express-session": "^1.10.3",
     "facebook-api": "^0.1.2",
     "jade": "^1",
+    "mailgun-js": "^0.6.8",
     "mongoose": "^3.8.24",
     "passport": "^0.2.1",
     "passport-facebook": "^2.0.0",

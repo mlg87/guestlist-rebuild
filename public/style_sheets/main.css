@@ -35,6 +35,7 @@ body {
   padding-top: 50px; /* required for bootstrap sticky nav */
   font-family: 'Source Sans Pro', sans-serif;
   overflow: scroll;
+  overflow-x: hidden;
 }
 
 
@@ -43,6 +44,12 @@ body {
 OVERWRITING BOOTSTRAP DEFAULTS
 
 *******************************************************/
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+}
 
 h1, h2, h3, h4, h5, h6, label {
   font-family: 'Merriweather', serif;
@@ -230,7 +237,7 @@ UTILITY CLASSES
 .video-bg {
   min-width: 100%;
   min-height: 100%;
-  width: auto;
+  /*width: auto;*/
   height: auto;
   display: block;
   z-index: -1;
@@ -241,15 +248,16 @@ UTILITY CLASSES
   min-width: 100%;
   min-height: 100%;
   width: auto;
-  height: auto;
+  height: 100vh;
   z-index: 1;
   position: absolute;
+  overflow: hidden;
 }
 
 .landing-container {
   position: absolute;
   display: block;
-  z-index: 999;
+  z-index: 10;
   color: #fff;
   right: 0;
   left: 0;
@@ -258,13 +266,14 @@ UTILITY CLASSES
 
 .landing-video {
   height: 100vh;
+  overflow: hidden;
 }
 
 /* LANDING INTRO INFO STYLING */
 
 .landing-intro {
-  height: 50vh;
-  margin-bottom: 50px;
+  height: 80vh;
+  background-color: #7ECEFD;
 }
 
 
@@ -312,6 +321,7 @@ UTILITY CLASSES
 
 p.headline-body {
   margin-bottom: 0;
+  font-size: 1.25em;
 }
 
 
@@ -422,6 +432,6 @@ MEDIA QUERIES
 
 @media (max-width: 768px) {
   body {
-    padding-top: 100px; /* required for bootstrap sticky nav */
+    padding-top: 50px; /* required for bootstrap sticky nav */
   } 
 }

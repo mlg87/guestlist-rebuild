@@ -9,6 +9,12 @@ var TempUser = require('../models/temp-user.js');
 var passport = require('passport');
 var _ = require('underscore');
 
+// mailgun
+var api_key = 'key-7af1621eccf8543dde502445289962f0';
+var domain = 'sandbox4e3d52c3422740139ba4fd86e06047fa.mailgun.org';
+var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
+
+
 var portalController = {
 	guestRegister: function(req, res, next) {
 		var data = req.body;
@@ -73,7 +79,16 @@ var portalController = {
 
 	// might not need this now that passport has been implemented
 	guestLoggedIn: function(req, res) {
+		console.log(req.session.temp_id);
 		console.log(schema.Guest.findOne());
+		if(req.session.temp_id) {
+			TempUser.findById(req.session.temp_id, function(err, user) {
+				// loop through all of the weddings on the temp user and accept each wedding (add them to their myWeddings)
+				user.weddings.forEach(function(el, i, arr) {
+					console.log('inside guestLoggedIn: ', user, ' has been invited to ', el, ' wedding');
+				});
+			});
+		}
 		res.render('guest-portal', {user: req.user});
 	},
 
@@ -92,7 +107,15 @@ var portalController = {
 					});
 					invitedUser.save(function(err, user) {
 						if(err) return next(err);
-						// mailgun goes here
+						var emailData = {
+							from: 'Plus1 <masonlgoetz@gmail.com>',
+							to: el,
+							subject: 'Join My Wedding Party of Singles on Plus1',
+							text: data.messageBody + ' http://localhost:7160/login?id=' + user._id
+						};
+						mailgun.messages().send(emailData, function(err, body) {
+							console.log('body from mailgun message: ', body);
+						});
 					});
 				}
 				else {
@@ -100,7 +123,15 @@ var portalController = {
 					user.weddings.push(wedding);
 					user.save(function(err, user) {
 						if(err) return next(err);
-						// mailgun goes here
+						var emailData = {
+							from: 'Plus1 <masonlgoetz@gmail.com>',
+							to: el,
+							subject: 'Join My Wedding Party of Singles on Plus1',
+							text: data.messageBody
+						};
+						mailgun.messages().send(emailData, function(err, body) {
+							console.log('body from mailgun message: ', body + ' http://localhost:7160/login?id=' + user._id);
+						});
 					});
 				}
 			});
@@ -111,7 +142,7 @@ var portalController = {
 
 	hostRegister: function(req, res, next) {
 		var data = req.body;
-		console.log(data);
+		// console.log(data);
 
 		User.findOne({email: data.hostEmail}, function(err, user) {
 			if(err) return next(err);
@@ -138,7 +169,7 @@ var portalController = {
 				});
 				newUser.save(function(err, user) {
 					if(err) console.log('there was an error in hostRegister: ', err);
-					console.log('added user(host): ', newUser);
+					console.log('added user(host): ', newUser.firstName);
 					req.login(user, function(err) {
 						if(err) console.log('there was an err, horray! ', err);
 						res.redirect('/host-portal');
@@ -151,7 +182,7 @@ var portalController = {
 	hostUpdateInfo: function(req, res) {
 		var data = req.body;
 		var id = req.user._id;
-		console.log('this is req.body in hostUpdateInfo: ', req.user);
+		console.log('this is id in hostUpdateInfo: ', id);
 		User.findById(id, function(err, user) {
 			if (err) return handleErr(err);
 			user.profilePic = data.profilePic || user.profilePic;
@@ -171,13 +202,13 @@ var portalController = {
 
 	// might not need this either
 	hostLoggedIn: function(req, res) {
-		console.log(schema.Host.findOne());
+		// console.log(schema.Host.findOne());
 		res.render('host-portal', {user: req.user});
 	},
 
 	// handles user authentication when they sign in using the localStrategy
 	userPortal: function(req, res, next) {
-		console.log('inside userPortal:', req.body);
+		// console.log('inside userPortal:', req.body);
 		passport.authenticate('local', function(err, user, info) {
 			if(err) return next(err);
 			if(!user) {
@@ -201,16 +232,16 @@ var portalController = {
 	},
 
 	userLogout: function(req, res) {
-		var userToLogOut = req.user;
+		// var userToLogOut = req.user;
 		req.logout();
-		console.log('user successfully logged out:', userToLogOut);
+		// console.log('user successfully logged out:', userToLogOut);
 		res.redirect('/');
 	},
 
 	fbAuth: function(req, res) {
-		console.log('res: ', res);
+		// console.log('res: ', res);
 		app.use('/guest-portal', function(req, res) {
-			res.redirect()
+			res.redirect();
 		});
 	},
 

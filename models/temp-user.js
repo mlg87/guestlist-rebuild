@@ -18,7 +18,8 @@ var tempUserSchema = mongoose.Schema({
 		type: Boolean,
 		default: false
 	},
-	weddings: [User]
+	weddings: [mongoose.Schema.Types.ObjectId]
+	// might be able to do User.Schema...
 });
 
 var TempUser = mongoose.model('TempUser', tempUserSchema);

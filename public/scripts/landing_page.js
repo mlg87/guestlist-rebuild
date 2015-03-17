@@ -10,6 +10,13 @@ $(document).on('ready', function() {
 
   $('.bg').backstretch('https://farm8.staticflickr.com/7296/8939535066_b85b77010f_k.jpg');
 
+  $('#info-getter').click(function() {
+    $('html, body').animate({
+        scrollTop: $( $.attr(this, 'href') ).offset().top
+    }, 500);
+    return false;
+  });
+
 // alt background image 'https://farm8.staticflickr.com/7296/8939535066_b85b77010f_k.jpg'
 // http://i1136.photobucket.com/albums/n488/MasonGoetz/WeddingBurner_Big_30Blue_zps4mbq19fe.jpg
 
