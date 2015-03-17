@@ -17,5 +17,18 @@
     "passport-facebook": "^2.0.0",
     "passport-local": "^1.0.0",
     "underscore": "^1.8.2"
-  }
+  },
+  "description": "A great application to make weddings a better experience for all.",
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mlg87/guestlist-rebuild.git"
+  },
+  "author": "Mason Goetz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mlg87/guestlist-rebuild/issues"
+  },
+  "homepage": "https://github.com/mlg87/guestlist-rebuild"
 }
