@@ -30,12 +30,13 @@ var profileController = {
 				res.render('wedding-profile', {user: user});
 			});
 		}
-		
-		var newWeddingId = req.user.myWeddings[0];
-		User.findById(newWeddingId, function(err, user) {
-			if(err) next(err);
-			res.render('wedding-profile', {user: req.user});
-		});
+		else if(req.user.role === 'guest') {
+			var newWeddingId = req.user.myWeddings[0];
+			User.findById(newWeddingId, function(err, user) {
+				if(err) next(err);
+				res.render('wedding-profile', {user: req.user});
+			});
+		}
 		
 	},
 	sendMsg: function(req, res, next) {
