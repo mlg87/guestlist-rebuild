@@ -105,6 +105,71 @@
 }
 
 
+/* LANDING PAGE INFO AREA */
+
+#info {
+  background-color: #7ECEFD;
+}
+
+.info-headline {
+  color: #fff;
+  font-family: 'Merriweather', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 4em;
+  margin-top: 0;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.info-tagline {
+  color: #fff;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+.info-body {
+  color: #fff;
+}
+
+.info-pic-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.info-pic-container img {
+  width: 100%;
+  max-height: 100%;
+  max-width: 375px;
+  border-radius: 2px;
+  border: 5px solid #fff;
+  margin: auto;
+  display: block;
+}
+
+.btn-info {
+  background: none;
+  border: 1px solid #fff;
+  border-radius: 2px;
+  width: 100%;
+}
+
+.btn-info:hover {
+  background-color: #fff;
+  color: #7ECEFD;
+  border-color: #fff;
+}
+
+.spacer {
+  height: 50px;
+  width: 100vw;
+  background-color: #7ECEFD;
+  display: inline-block;
+  margin-bottom: 25px;
+}
+
+
 /*******************************************************
 
 MEDIA QUERIES

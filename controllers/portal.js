@@ -75,7 +75,6 @@ var portalController = {
 		// res.redirect('/guest-portal');
 	},
 
-	// might not need this now that passport has been implemented
 	guestLoggedIn: function(req, res) {
 		console.log(req.session.temp_id);
 		console.log(schema.Guest.findOne());
@@ -84,9 +83,16 @@ var portalController = {
 				// loop through all of the weddings on the temp user and accept each wedding (add them to their myWeddings)
 				user.weddings.forEach(function(el, i, arr) {
 					console.log('inside guestLoggedIn: ', user, ' has been invited to ', el, ' wedding');
+					req.user.myWeddings.push(el);
 				});
+				req.user.save(function(err, user) {
+					if(err) return next(err);
+					console.log('this user has been logged in, moved from TempUser to User: ', user);
+				});
+				TempUser.findByIdAndRemove(user._id, function(){});
 			});
 		}
+		req.session.temp_id = null;
 		res.render('guest-portal', {user: req.user});
 	},
 
