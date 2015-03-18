@@ -12,7 +12,7 @@
     facebook: #4a6ea9
     twitter: #5ea9dd
 
-    main: #7ECEFD
+    main: #7ECEFD / rgb(126, 206, 253)
     paper: #FFF6E5
     warning: #FF7F66
     hover: #2185C5
@@ -306,6 +306,10 @@ UTILITY CLASSES
 .form-option {
   text-align: center;
   font-family: 'Source Sans Pro', sans-serif;
+}
+
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+  background-color: rgb(126, 206, 253);
 }
 
 

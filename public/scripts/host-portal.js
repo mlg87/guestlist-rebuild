@@ -26,5 +26,6 @@ $(document).ready(function() {
   	$.post('/guest-em-invite', $(this).serialize(), function(data) {
   			console.log(data);
   	});
+  	$('#host-guest-invite-modal').modal('hide');
   });
 });

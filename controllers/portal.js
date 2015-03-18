@@ -10,10 +10,8 @@ var passport = require('passport');
 var _ = require('underscore');
 
 // mailgun
-var api_key = 'key-7af1621eccf8543dde502445289962f0';
-var domain = 'sandbox4e3d52c3422740139ba4fd86e06047fa.mailgun.org';
-var mailgun = require('mailgun-js')({apiKey: api_key, domain: domain});
-
+var domain = 'plus1me.com';
+var mailgun = require('mailgun-js')({apiKey: process.env.apiKey, domain: domain});
 
 var portalController = {
 	guestRegister: function(req, res, next) {

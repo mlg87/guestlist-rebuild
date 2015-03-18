@@ -77,8 +77,8 @@ block content
 						input.btn.btn-primary(type='submit' value='Update')
 	if user.fbId && user.incomplete === true
 		.container.social-reg
-			h2 Thanks for Registering for Plus1
-			h4 Please take a few moments to tell us a little bit more about yourself.
+			h2.source Thanks for Registering for Plus1
+			h4.source Please take a few moments to tell us a little bit more about yourself.
 			form#social-reg-update(method='post', action='/guest-update-info')
 				.row
 					.col-md-6.col-sm-6.col-xs-6
