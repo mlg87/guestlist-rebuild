@@ -37,7 +37,7 @@ app.post('/host-reg-form', portalController.hostRegister);
 
 // handler for the form on the login page
 app.post('/userlogin', portalController.userPortal);
-// is scope for facebook where i require what i want to get from fb
+// is scope for facebook where i require what i want to get from fb ok
 
 // handler for logging in/registering with facebook
 app.get('/auth/facebook', passport.authenticate('facebook', {scope: ['email', 'user_photos']}));
