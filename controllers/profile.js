@@ -22,6 +22,7 @@ var profileController = {
 		
 	},
 	currentWedding: function(req, res, next) {
+		console.log('user role inside of currentWedding: ', req.user.role);
 		if(req.user.role === 'host') {
 			var weddingId = req.params._id;
 			console.log('weddingId in currentWedding: ', weddingId);
