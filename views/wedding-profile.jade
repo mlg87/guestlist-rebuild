@@ -101,10 +101,9 @@ block content
 							if weddingPlanner.fbId
 								img(src='#{weddingPlanner.profilePic} + width=250&height=250')
 					.container.btm-spacer-clean
-						.row
+						.row.wedding-info-display
 							.col-xs-4.col-sm-4.col-md-4
 								h4.prof-info Location:
-									//- this will need to be something different, maybe #{user.myWeddings.findById...}
 									p.user-info #{weddingPlanner.hostWedLocation}
 								h4.prof-info Date:
 									p.user-info #{weddingPlanner.hostWedDate}
@@ -122,7 +121,7 @@ block content
 									p.user-info #{weddingPlanner.hostReceptionTime}
 			.container
 				.row
-					h2.btm-spacer.middle GuestList
+					h2.btm-spacer.middle Guest List
 					.guest-display.btm-spacer-clean
 					h2.btm-spacer.middle Chatter
 					button.btn.btn-primary.btn-lg(data-toggle='modal', data-target='#wedding-page-add-comment-modal') Add to the Chatter

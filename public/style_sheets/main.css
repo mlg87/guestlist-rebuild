@@ -155,6 +155,10 @@ UTILITY CLASSES
 
 *******************************************************/
 
+.wedding-info-display {
+  text-align: center;
+}
+
 .inactive {
   display: none;
 }
@@ -359,7 +363,7 @@ p.headline-body {
 
 .portal-header {
   text-align: center;
-  border-bottom: 1px solid #8B9CA4;
+  /*border-bottom: 1px solid #8B9CA4;*/
   padding: 20px 0 20px;
 }
 
