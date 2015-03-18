@@ -67,6 +67,9 @@ app.get('/profile/:_id', profileController.currentUser);
 // handler for viewing a wedding profile page
 app.get('/wedding-profile/:_id', profileController.currentWedding);
 
+// handler for guest msg
+app.post('/profile-msg', profileController.sendMsg);
+
 // handler for guest email invitation from host
 app.post('/guest-em-invite', portalController.guestInvite);
 

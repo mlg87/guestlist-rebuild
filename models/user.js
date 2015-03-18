@@ -57,6 +57,12 @@ var userSchema = mongoose.Schema({
 	party: [userSchema],
 	// only contain host ids
 	myWeddings: [userSchema],
+	messages: [{
+		timestamp: {type: Date, default: Date.now},
+		message: String,
+		from: mongoose.Schema.Types.ObjectId,
+		to: mongoose.Schema.Types.ObjectId
+	}],
 	/////////////////
 	// GUEST DATA //
 	/////////////////

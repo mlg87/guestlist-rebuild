@@ -12,7 +12,6 @@ $(document).ready(function() {
 	$('#social-reg-update').on('submit', function(e) {
 		e.preventDefault();
 		$.post('/guest-update-info', $(this).serialize(), function(data){
-			console.log(data);
 			$('#friendsOf').text(data.friendsOf);
 			$('#backgroundStory').text(data.guestBackgroundStory);
 			$('#weddingStory').text(data.guestWeddingStory);

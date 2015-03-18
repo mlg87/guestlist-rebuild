@@ -5,6 +5,10 @@
 var mongoose = require('mongoose');
 var User = require('../models/user.js');
 
+// mailgun
+var domain = 'plus1me.com';
+var mailgun = require('mailgun-js')({apiKey: process.env.apiKey, domain: domain});
+
 var profileController = {
 	currentUser: function(req, res, next) {
 		var userId = req.params._id;
@@ -24,6 +28,48 @@ var profileController = {
 			if(err) next(err);
 			res.render('wedding-profile', {user: user});
 		});
+	},
+	sendMsg: function(req, res, next) {
+		var data = req.body;
+		var from = req.user._id;
+		var to = data.to;
+		var msg = data.msg;
+
+		User.findById(to, function(err, user) {
+			if(err) console.log('err attempting to find the msg receiver in profile.js.sendMsg: ', err);
+			var recepient = user;
+			var emailData = {
+				from: req.user.firstName + ' ' + req.user.lastName + ' | Plus1 <' + req.user.email + '>',
+				to: recepient.email,
+				subject: req.user.firstName + ' ' + req.user.lastName + ' Messaged You On Plus1',
+				text: msg
+			};
+			mailgun.messages().send(emailData, function(err, body) {
+				console.log('body from mailgun msg(sendMsg): ', body, ' recepient email: ', recepient.email, ' sender email: ', req.user.email);
+			});
+			recepient.messages.push({
+				message: msg,
+				from: from,
+				to: user._id
+			});
+			recepient.save(function(err) {
+				if(err) console.log('err attempting to save recepient: ', err);
+			});
+		});
+
+		User.findById(from, function(err, user) {
+			if(err) console.log('err attempting to find the msg sender in profile.js.sendMsg: ', err);
+			user.messages.push({
+				message: msg,
+				from: user._id,
+				to: to
+			});
+			user.save(function(err) {
+				if(err) console.log('err attempting to save sender: ', err);
+			});
+		});
+
+		res.send(data);
 	}
 };
 

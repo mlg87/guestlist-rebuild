@@ -3,6 +3,9 @@ extends layout
 block head-scripts
 	link(rel='stylesheet', type='text/css', href='/style_sheets/user_profile.css')
 
+block body-scripts
+	script(src='/scripts/guest-profile.js')
+
 block navbar
 	.navbar-collapse.navbar-right
 		ul.nav.navbar-nav
@@ -36,7 +39,7 @@ block content
 								span(aria-hidden='true') &times;
 							h4.modal-title Send #{user.firstName} a Message
 						.modal-body
-							form(method='post', action='/profile-msg')
+							form#message-user(method='post', action='/profile-msg')
 								.form-group
 									label(for='profile-msg-body') Message:
 									textarea#profile-msg-body.form-control(rows='3', name='profile-msg-body', placeholder="Hey sexy. What's your favorite position?")
@@ -70,7 +73,8 @@ block content
 							.col-md-12
 								h4.prof-info Best Story About The Couple:
 									p.user-info #{user.guestWeddingStory}
-
+	.inactive
+		p#user-id #{user._id}
 				
 
 				

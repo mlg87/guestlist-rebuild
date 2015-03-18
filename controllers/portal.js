@@ -116,9 +116,13 @@ var portalController = {
 							to: el,
 							subject: 'Join My Wedding Party of Singles on Plus1',
 							text: data.messageBody + ' http://plus1me.com/login?id=' + user._id
+							// use this url for production:
+							// http://plus1me.com/login?id=
+							// this url for testing:
+							// http://localhost:7160/login?id=
 						};
 						mailgun.messages().send(emailData, function(err, body) {
-							console.log('body from mailgun message: ', body);
+							console.log('body from mailgun message(guestInvite): ', body);
 						});
 					});
 				}
@@ -131,7 +135,11 @@ var portalController = {
 							from: 'Plus1 <masonlgoetz@gmail.com>',
 							to: el,
 							subject: 'Join My Wedding Party of Singles on Plus1',
-							text: data.messageBody
+							text: data.messageBody + ' http://plus1me.com/login?id=' + user._id
+							// use this url for production:
+							// http://plus1me.com/login?id=
+							// this url for testing:
+							// http://localhost:7160/login?id=
 						};
 						mailgun.messages().send(emailData, function(err, body) {
 							console.log('body from mailgun message: ', body + ' http://plus1me.com/login?id=' + user._id);
