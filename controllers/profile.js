@@ -28,19 +28,20 @@ var profileController = {
 			console.log('weddingId in currentWedding: ', weddingId);
 			User.findById(weddingId, function(err, user) {
 				if(err) next(err);
-				res.render('wedding-profile', {user: user});
+				res.render('wedding-profile', {user: user, weddingPlanner: user});
 			});
 		}
 		else if(req.user.role === 'guest') {
 			var loggedInUser = req.user;
 			console.log('users wedding at 0 index: ', req.user.myWeddings[0]);
 			console.log('logged in user: ', loggedInUser);
+			// console.log('this is req.params._id', req.params);
 			var newWeddingId = req.user.myWeddings[0];
 			User.findById(newWeddingId, function(err, user) {
 				if(err) next(err);
 				console.log('user inside of else if of currentWedding: ', user);
 				console.log('logged in user inside of else if of currentWedding: ', loggedInUser);
-				res.render('wedding-profile', {user: loggedInUser});
+				res.render('wedding-profile', {user: loggedInUser, weddingPlanner: user});
 				// this causes a redirect loop:
 				// res.redirect('/wedding-profile/' + newWeddingId);
 			});

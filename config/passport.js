@@ -16,13 +16,27 @@ var user = new User({
 	lastName: 'Quest',
 	email: 'johnnyquest@gmail.com',
 	password: 'test',
-	role: 'guest',
+	role: 'host',
 	profilePic: 'http://thestalkingmoon.weebly.com/uploads/1/1/5/4/11544757/3616540_orig.png?303'
+});
+
+var otherUser = new User ({
+	firstName: 'Mason',
+	lastName: 'Goetz',
+	email: 'masonlgoetz@gmail.com',
+	password: '1234',
+	role: 'guest',
+	myWeddings: [user._id]
 });
 
 user.save(function(err, user) {
 	if(err) console.log('there was an error:', err);
 	console.log('seeded user');
+});
+
+otherUser.save(function(err, user) {
+	if(err) console.log(err);
+	console.log('seeded the otherUser');
 });
 
 // session serialization
