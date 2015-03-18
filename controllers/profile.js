@@ -22,12 +22,21 @@ var profileController = {
 		
 	},
 	currentWedding: function(req, res, next) {
-		var weddingId = req.params._id;
-		console.log('weddingId in currentWedding: ', weddingId);
-		User.findById(weddingId, function(err, user) {
+		if(req.user.role === 'host') {
+			var weddingId = req.params._id;
+			console.log('weddingId in currentWedding: ', weddingId);
+			User.findById(weddingId, function(err, user) {
+				if(err) next(err);
+				res.render('wedding-profile', {user: user});
+			});
+		}
+		
+		var newWeddingId = req.user.myWeddings[0];
+		User.findById(newWeddingId, function(err, user) {
 			if(err) next(err);
-			res.render('wedding-profile', {user: user});
+			res.render('wedding-profile', {user: req.user});
 		});
+		
 	},
 	sendMsg: function(req, res, next) {
 		var data = req.body;
