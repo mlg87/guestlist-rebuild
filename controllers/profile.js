@@ -37,7 +37,9 @@ var profileController = {
 			User.findById(newWeddingId, function(err, user) {
 				if(err) next(err);
 				// res.render('wedding-profile', {user: req.user});
-				res.redirect('/wedding-profile/' + newWeddingId);
+				console.log('user inside of else if of currentWedding: ', user);
+				// this causes a redirect loop:
+				// res.redirect('/wedding-profile/' + newWeddingId);
 			});
 		}
 		
