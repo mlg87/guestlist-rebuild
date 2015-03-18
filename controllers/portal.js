@@ -84,6 +84,9 @@ var portalController = {
 				user.weddings.forEach(function(el, i, arr) {
 					console.log('inside guestLoggedIn: ', user, ' has been invited to ', el, ' wedding');
 					req.user.myWeddings.push(el);
+					User.findById(el, function(err, user) {
+						user.party.push(req.user._id);
+					});
 				});
 				req.user.save(function(err, user) {
 					if(err) return next(err);
