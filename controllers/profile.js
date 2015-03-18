@@ -32,12 +32,13 @@ var profileController = {
 			});
 		}
 		else if(req.user.role === 'guest') {
+			var loggedInUser = req.user;
 			console.log('users wedding at 0 index: ', req.user.myWeddings[0]);
 			var newWeddingId = req.user.myWeddings[0];
 			User.findById(newWeddingId, function(err, user) {
 				if(err) next(err);
-				res.render('wedding-profile', {user: req.user});
 				console.log('user inside of else if of currentWedding: ', user);
+				res.render('wedding-profile', {user: loggedInUser});
 				// this causes a redirect loop:
 				// res.redirect('/wedding-profile/' + newWeddingId);
 			});
