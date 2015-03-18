@@ -98,7 +98,7 @@ var portalController = {
 
 	guestInvite: function(req, res, next) {
 		var data = req.body;
-		var wedding = req.user._id;
+		var wedding = req.user;
 
 		data.guestEmail.forEach(function(el, i, arr) {
 			TempUser.findOne({email: el}, function(err, user) {

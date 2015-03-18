@@ -40,7 +40,7 @@ var profileController = {
 				if(err) next(err);
 				console.log('user inside of else if of currentWedding: ', user);
 				console.log('logged in user inside of else if of currentWedding: ', loggedInUser);
-				res.render('wedding-profile', {user: user});
+				res.render('wedding-profile', {user: loggedInUser});
 				// this causes a redirect loop:
 				// res.redirect('/wedding-profile/' + newWeddingId);
 			});
