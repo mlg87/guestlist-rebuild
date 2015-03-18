@@ -122,6 +122,7 @@ var portalController = {
 							// http://localhost:7160/login?id=
 						};
 						mailgun.messages().send(emailData, function(err, body) {
+							if(err) console.log('err occured in mailgun when sending an invite to a new user: ', err);
 							console.log('body from mailgun message(guestInvite): ', body);
 						});
 					});
@@ -142,6 +143,7 @@ var portalController = {
 							// http://localhost:7160/login?id=
 						};
 						mailgun.messages().send(emailData, function(err, body) {
+							if(err) console.log('err occured in mailgun when sending an invite to an existing user: ', err);
 							console.log('body from mailgun message: ', body + ' http://plus1me.com/login?id=' + user._id);
 						});
 					});
