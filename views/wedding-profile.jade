@@ -54,77 +54,79 @@ block content
 	if user
 		if user.role == 'host'
 			.container
-					.row
-							.col-md-12.side-cleanup
-								.user-portal-prof-pic
-									unless user.fbId
-										img(src='#{user.profilePic}')
-									if user.fbId
-										img(src='#{user.profilePic} + width=250&height=250')
-					.container.btm-spacer
-						.row
-							.col-xs-4.col-sm-4.col-md-4
-								h4.prof-info Location:
-									//- this will need to be something different, maybe #{user.myWeddings.findById...}
-									p.user-info #{user.hostWedLocation}
-								h4.prof-info Date:
-									p.user-info #{user.hostWedDate}
-								h4.prof-info Time:
-									p.user-info #{user.hostWedTime}
-							.col-xs-4.col-sm-4.col-md-4
-								h4.prof-info Venue:
-									p.user-info #{user.hostWedVenue}
-								a(href='#{user.hostSite}')
-									button.btn.btn-primary.btn-lg Wedding Site
-							.col-xs-4.col-sm-4.col-md-4
-								h4.prof-info Reception Venue:
-									p.user-info #{user.hostReceptionVenue}
-								h4.prof-info Reception Time:
-									p.user-info #{user.hostReceptionTime}
-					.container
-						.row
-							h2.btm-spacer.middle GuestList
-							.guest-display.btm-spacer
-							h2.btm-spacer.middle Chatter
-							button.btn.btn-primary.btn-lg(data-toggle='modal', data-target='#wedding-page-add-comment-modal') Add to the Chatter
-							.wedding-page-chatter.btm-spacer
+				h2.btm-spacer-clean.middle #{user.firstName} & #{user.hostFianceFirstName}
+				.row
+					.col-md-12.side-cleanup
+						.user-portal-prof-pic
+							unless user.fbId
+								img(src='#{user.profilePic}')
+							if user.fbId
+								img(src='#{user.profilePic} + width=250&height=250')
+			.container.btm-spacer-clean
+				.row
+					.col-xs-4.col-sm-4.col-md-4
+						h4.prof-info Location:
+							//- this will need to be something different, maybe #{user.myWeddings.findById...}
+							p.user-info #{user.hostWedLocation}
+						h4.prof-info Date:
+							p.user-info #{user.hostWedDate}
+						h4.prof-info Time:
+							p.user-info #{user.hostWedTime}
+					.col-xs-4.col-sm-4.col-md-4
+						h4.prof-info Venue:
+							p.user-info #{user.hostWedVenue}
+						a(href='#{user.hostSite}')
+							button.btn.btn-primary.btn-lg Wedding Site
+					.col-xs-4.col-sm-4.col-md-4
+						h4.prof-info Reception Venue:
+							p.user-info #{user.hostReceptionVenue}
+						h4.prof-info Reception Time:
+							p.user-info #{user.hostReceptionTime}
+			.container
+				.row
+					h2.btm-spacer.middle GuestList
+					.guest-display.btm-spacer-clean
+					h2.btm-spacer.middle Chatter
+					button.btn.btn-primary.btn-lg(data-toggle='modal', data-target='#wedding-page-add-comment-modal') Add to the Chatter
+					.wedding-page-chatter.btm-spacer-clean
 	if user
 		if user.role == 'guest'
 			.container
-					.row
-						.col-md-12.side-cleanup
-							.user-portal-prof-pic
-								unless weddingPlanner
-									img(src='#{weddingPlanner.profilePic}')
-								if weddingPlanner.fbId
-									img(src='#{weddingPlanner.profilePic} + width=250&height=250')
-					.container.btm-spacer
-						.row
-							.col-xs-4.col-sm-4.col-md-4
-								h4.prof-info Location:
-									//- this will need to be something different, maybe #{user.myWeddings.findById...}
-									p.user-info #{weddingPlanner.hostWedLocation}
-								h4.prof-info Date:
-									p.user-info #{weddingPlanner.hostWedDate}
-								h4.prof-info Time:
-									p.user-info #{weddingPlanner.hostWedTime}
-							.col-xs-4.col-sm-4.col-md-4
-								h4.prof-info Venue:
-									p.user-info #{weddingPlanner.hostWedVenue}
-								a(href='#{weddingPlanner.hostSite}')
-									button.btn.btn-primary.btn-lg Wedding Site
-							.col-xs-4.col-sm-4.col-md-4
-								h4.prof-info Reception Venue:
-									p.user-info #{weddingPlanner.hostReceptionVenue}
-								h4.prof-info Reception Time:
-									p.user-info #{weddingPlanner.hostReceptionTime}
-					.container
-						.row
-							h2.btm-spacer.middle GuestList
-							.guest-display.btm-spacer
-							h2.btm-spacer.middle Chatter
-							button.btn.btn-primary.btn-lg(data-toggle='modal', data-target='#wedding-page-add-comment-modal') Add to the Chatter
-							.wedding-page-chatter.btm-spacer
+				h2.btm-spacer-clean.middle #{weddingPlanner.firstName} & #{weddingPlanner.hostFianceFirstName}
+				.row
+					.col-md-12.side-cleanup
+						.user-portal-prof-pic
+							unless weddingPlanner
+								img(src='#{weddingPlanner.profilePic}')
+							if weddingPlanner.fbId
+								img(src='#{weddingPlanner.profilePic} + width=250&height=250')
+			.container.btm-spacer-clean
+				.row
+					.col-xs-4.col-sm-4.col-md-4
+						h4.prof-info Location:
+							//- this will need to be something different, maybe #{user.myWeddings.findById...}
+							p.user-info #{weddingPlanner.hostWedLocation}
+						h4.prof-info Date:
+							p.user-info #{weddingPlanner.hostWedDate}
+						h4.prof-info Time:
+							p.user-info #{weddingPlanner.hostWedTime}
+					.col-xs-4.col-sm-4.col-md-4
+						h4.prof-info Venue:
+							p.user-info #{weddingPlanner.hostWedVenue}
+						a(href='#{weddingPlanner.hostSite}')
+							button.btn.btn-primary.btn-lg Wedding Site
+					.col-xs-4.col-sm-4.col-md-4
+						h4.prof-info Reception Venue:
+							p.user-info #{weddingPlanner.hostReceptionVenue}
+						h4.prof-info Reception Time:
+							p.user-info #{weddingPlanner.hostReceptionTime}
+			.container
+				.row
+					h2.btm-spacer.middle GuestList
+					.guest-display.btm-spacer-clean
+					h2.btm-spacer.middle Chatter
+					button.btn.btn-primary.btn-lg(data-toggle='modal', data-target='#wedding-page-add-comment-modal') Add to the Chatter
+					.wedding-page-chatter.btm-spacer-clean
 	.container.chatter-msg-tem.chatter-msg.inactive
 		.row
 			.col-md-2.media-left

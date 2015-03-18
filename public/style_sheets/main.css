@@ -231,6 +231,16 @@ UTILITY CLASSES
 
 }
 
+.btn-register-modal-toggle {
+  background-color: #fff;
+  float: right;
+  color: #7ECEFD;
+}
+
+.btn-register-modal-toggle:hover {
+  color: #2185C5;
+}
+
 
 /* BG VIDEO STYLING */
 
@@ -295,12 +305,16 @@ UTILITY CLASSES
 
 .standalone-form {
   background-color: #ecf0f1;
+  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 2px;
 }
 
 .form-header {
   background-color: #7ECEFD;
   color: #fff;
   font-family: 'Source Sans Pro', sans-serif;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
 }
 
 .form-option {

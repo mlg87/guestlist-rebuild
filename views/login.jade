@@ -1,6 +1,7 @@
 extends layout
 
-//- no need for 'block navbar' since the login page allows users to login or register through fb/twitter
+block head-scripts
+	link(rel='stylesheet', type='text/css', href='/style_sheets/landing_page.css')
 
 block content
 	.container
@@ -32,3 +33,36 @@ block content
 						input.form-sub-clean.btn.btn-lg(type='submit')
 						.row
 							.col-md-4.col-sm-4.col-xs-4.col-md-offset-4.col-sm-offset-4.col-xs-offset-4
+				a(href='#registrationModal', data-toggle='modal')
+					button.btn.btn-register-modal-toggle Need an account?
+	#registrationModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+		.modal-dialog
+			.modal-content
+				.modal-header
+					button.close(type='button', data-dismiss='modal', aria-label='Close')
+						span(aria-hidden='true') &times;                   
+					h4#myModalLabel.modal-title Register for Plus1
+				.modal-body
+					.social-links
+						ul
+							li.social-container
+								a(href='/auth/facebook')
+									button.btn-primary.social-login-btn.fb-login-btn
+										span
+										img(src='./imgs/fb.png')
+										p.social-text Register with Facebook
+							li.social-container
+								a(href='/auth/twitter')
+									button.social-login-btn.tw-login-btn
+										span
+											img(src='./imgs/twitter.png')
+											p.social-text Register with Twitter
+					.form-spacer-clean
+					h4.form-option OR
+					.form-spacer-clean
+					h5.form-option Register As
+					.row
+						.col-md-6
+							a(href='/guest-registration').btn.btn-primary.btn-lg.modal-btn Guest
+						.col-md-6
+							a(href='/host-registration').btn.btn-primary.btn-lg.modal-btn Host
