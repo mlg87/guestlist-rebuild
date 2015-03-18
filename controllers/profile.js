@@ -32,6 +32,7 @@ var profileController = {
 			});
 		}
 		else if(req.user.role === 'guest') {
+			console.log('users wedding at 0 index: ', req.user.myWeddings[0]);
 			var newWeddingId = req.user.myWeddings[0];
 			User.findById(newWeddingId, function(err, user) {
 				if(err) next(err);
