@@ -11,7 +11,7 @@ var User = require('../models/user');
 var fbapi = require('facebook-api');
 
 // dummy user for local strategy testing
-var user = new User({
+/*var user = new User({
 	firstName: 'Johnny',
 	lastName: 'Quest',
 	email: 'johnnyquest@gmail.com',
@@ -37,7 +37,7 @@ user.save(function(err, user) {
 otherUser.save(function(err, user) {
 	if(err) console.log(err);
 	console.log('seeded the otherUser');
-});
+});*/
 
 // session serialization
 // This small subset of code will take a user object, used
