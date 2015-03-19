@@ -24,7 +24,7 @@ var profileController = {
 	currentWedding: function(req, res, next) {
 		console.log('user role inside of currentWedding: ', req.user.role);
 		if(req.user.role === 'host') {
-			var weddingId = req.params._id;
+			var weddingId = req.user._id;
 			console.log('weddingId in currentWedding: ', weddingId);
 			User.findById(weddingId, function(err, user) {
 				if(err) next(err);
