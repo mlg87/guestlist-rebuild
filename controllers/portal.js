@@ -87,7 +87,7 @@ var portalController = {
 					User.findById(el, function(err, user) {
 						console.log('user in guestloggedin find by id dick:',user);
 						if(err) console.log('err attempting to push a new user into a host\'s party in guestLoggedIn: ', err);
-						user.party.push(req.user._id);
+						user.party.push(req.user);
 						user.save();
 					});
 				});
