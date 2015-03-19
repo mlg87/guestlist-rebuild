@@ -84,16 +84,16 @@ var portalController = {
 				user.weddings.forEach(function(el, i, arr) {
 					console.log('inside guestLoggedIn: ', user, ' has been invited to ', el, ' wedding');
 					req.user.myWeddings.push(el);
-					User.findById(el, function(err, user) {
-						if(err) console.log('err attempting to push a new user into a host\'s party in guestLoggedIn: ', err);
-						user.party.push(req.user._id);
-					});
 				});
 				req.user.save(function(err, user) {
 					if(err) return next(err);
 					console.log('this user has been logged in, moved from TempUser to User: ', user);
 				});
 				TempUser.findByIdAndRemove(user._id, function(){});
+			});
+			User.findById(el, function(err, user) {
+				if(err) console.log('err attempting to push a new user into a host\'s party in guestLoggedIn: ', err);
+				user.party.push(req.user._id);
 			});
 		}
 		req.session.temp_id = null;
