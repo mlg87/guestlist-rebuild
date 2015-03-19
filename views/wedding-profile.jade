@@ -90,7 +90,10 @@ block content
 							.col-md-3.col-sm-4.col-xs-6
 								.guest-display-img-container.guest-snippet.snippet-overlay
 									a(href='/profile/#{guest._id}')
-										img(src='#{guest.profilePic}')
+										unless guest.fbId
+											img(src='#{guest.profilePic}')
+										if guest.fbId
+											img(src='#{guest.profilePic} + width=150&height=150')
 										span.overlay
 											span.glyphicon.glyphicon-user
 									p #{guest.firstName}
