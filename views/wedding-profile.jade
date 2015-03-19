@@ -107,7 +107,7 @@ block content
 				.row
 					.col-md-12.side-cleanup
 						.user-portal-prof-pic
-							unless weddingPlanner
+							unless weddingPlanner.fbId
 								img(src='#{weddingPlanner.profilePic}')
 							if weddingPlanner.fbId
 								img(src='#{weddingPlanner.profilePic} + width=250&height=250')
