@@ -96,7 +96,7 @@ block content
 											img(src='#{guest.profilePic} + width=150&height=150')
 										span.overlay
 											span.glyphicon.glyphicon-user
-									p #{guest.firstName}
+									p=guest.firstName
 					//- h2.btm-spacer.middle Chatter
 					//- button.btn.btn-primary.btn-lg(data-toggle='modal', data-target='#wedding-page-add-comment-modal') Add to the Chatter
 					.wedding-page-chatter.btm-spacer-clean
@@ -144,7 +144,7 @@ block content
 											img(src='#{guest.profilePic} + width=150&height=150')
 										span.overlay
 											span.glyphicon.glyphicon-user
-									p #{guest.firstName}
+									p=guest.firstName
 					//- h2.btm-spacer.middle Chatter
 					//- button.btn.btn-primary.btn-lg(data-toggle='modal', data-target='#wedding-page-add-comment-modal') Add to the Chatter
 					.wedding-page-chatter.btm-spacer-clean
@@ -198,3 +198,13 @@ block content
 						.modal-footer
 							button.btn.btn-default(type='button', data-dismiss='modal') Cancel
 							button#wedding-page-comment-reply-add.btn.btn-primary(type='button') Add Reply
+	#guest-cancel-wedding.modal.fade(tabindex='-1', role='dialog')
+				.modal-dialog
+					.modal-content
+						.modal-header
+							button.close(type='button', data-dismiss='modal', aria-label='Close')
+								span(aria-hidden='true') &times;
+							h4.modal-title Seriously?
+						.modal-body
+							p Come on, you didn&apos;t really think that we would let you make a suggestion to cancel the wedding? Did you? That would be the worst feature conceived. Not to mention, we bet you&apos;d regret it when you&apos;re sober tomorrow, Derek.
+							p.quote-src-right - Plus1 Team
