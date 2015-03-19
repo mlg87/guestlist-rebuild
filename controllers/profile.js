@@ -28,6 +28,7 @@ var profileController = {
 			console.log('weddingId in currentWedding: ', weddingId);
 			User.findById(weddingId, function(err, user) {
 				if(err) next(err);
+				console.log('user.party: ', user.party);
 				res.render('wedding-profile', {user: user, weddingPlanner: user, userGuests: user.party, weddingPlannerGuests: user.party});
 			});
 		}
