@@ -7,6 +7,7 @@ var LocalStrategy = require('passport-local').
 	Strategy;
 var FacebookStrategy = require('passport-facebook').
 	Strategy;
+var TwitterStrategy = require('passport-twitter').Strategy;
 var User = require('../models/user');
 var fbapi = require('facebook-api');
 
@@ -109,7 +110,7 @@ passport.use(localStrategy);
 var fbStrategy = new FacebookStrategy({
 	clientID: process.env.clientID,
 	clientSecret: process.env.clientSecret,
-	callbackURL: process.env.callbackURL
+	fbCallbackURL: process.env.fbCallbackURL
 }, function(accessToken, refreshToken, profile, next) {
 	User.findOne({fbId: profile.id}, function(err, user) {
 		console.log('err inside of findOne fbStrategy:', err);
@@ -140,11 +141,11 @@ var fbStrategy = new FacebookStrategy({
 				profilePic: "https://graph.facebook.com/" + profile.id + "/picture?", //make sure to always add back in width=200&height=200
 				incomplete: true
 			});
-			console.log('this is what \'user\' is:', user);
-			console.log('this is the err from fbStrategy, but out of save: ', err);
+			/*console.log('this is what \'user\' is:', user);
+			console.log('this is the err from fbStrategy, but out of save: ', err);*/
 			newUser.save(function(err, user) {
-				console.log('this is the err inside newUser.save: ', err);
-				console.log('this is the user inside newUser.save: ', user);
+				/*console.log('this is the err inside newUser.save: ', err);
+				console.log('this is the user inside newUser.save: ', user);*/
 				if(err) throw err;
 				next(null, user);
 			});
@@ -153,3 +154,33 @@ var fbStrategy = new FacebookStrategy({
 });
 
 passport.use(fbStrategy);
+
+
+// twitter login to app
+var twitterStrategy = new TwitterStrategy({
+	consumerKey: process.env.consumerKey,
+	consumerSecret: process.env.consumerSecret,
+	twitterCallbackURL: process.env.twitterCallbackURL
+}, function(token, tokenSecret, profile, next) {
+	User.findOne({twitterId: profile.id}, function(err, user) {
+		if(err) return next(err);
+		if(user) {
+			// user was found in the db, allow access
+			return next(null, user);
+		} else {
+			// no user, so create them
+			var newUser = new User({
+				twitterId: profile.id,
+				displayName: profile.displayName,
+				twitterToken: token,
+				incomplete: true
+			});
+			newUser.save(function(err, user) {
+				if(err) throw err;
+				next(null, user);
+			});
+		}
+	});
+});
+
+passport.use(twitterStrategy);

@@ -16,6 +16,7 @@
     "passport": "^0.2.1",
     "passport-facebook": "^2.0.0",
     "passport-local": "^1.0.0",
+    "passport-twitter": "^1.0.3",
     "underscore": "^1.8.2"
   },
   "description": "A great application to make weddings a better experience for all.",

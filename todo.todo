@@ -12,6 +12,7 @@ Login Page:
    ☐ in the user.js 'userPortal', add logic to determine the role of the user
  ☐ facebook authentication
    ☐ take user photo url as well as name and email
+ ☐  twitter authentication: does it need scope?
 
 NavBar:   
  ☐ render a different navbar based on who is logged in

@@ -46,6 +46,13 @@ app.get('/auth/facebook/callback', passport.authenticate('facebook', {
 	failureRedirect: '/login'
 }));
 
+// handler for logging in/registering with twitter
+app.get('/auth/twitter', passport.authenticate('twitter'));
+app.get('/auth/twitter/callback', passport.authenticate('twitter', {
+	successRedirect: '/guest-portal',
+	failureRedirect: '/login'
+}));
+
 // ensureAuthenticated protects routes if a given user is not logged in
 // this needs to come before the portals so user's have to be logged in
 app.use(passportConfig.ensureAuthenticated);

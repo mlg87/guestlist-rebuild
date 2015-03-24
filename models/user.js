@@ -18,7 +18,16 @@ var userSchema = mongoose.Schema({
 	fbId: {
 		type: String
 	},
+	//////////////
+	// TWITTER //
+	//////////////
+	twitterId: {
+		type: String
+	},
+	twitterToken: String,
+	twitterUserName: String,
 	// general data
+	displayName: String,
 	firstName: {
 		type: String/*,
 		required: true*/
