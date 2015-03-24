@@ -146,7 +146,7 @@ var fbStrategy = new FacebookStrategy({
 			newUser.save(function(err, user) {
 				/*console.log('this is the err inside newUser.save: ', err);
 				console.log('this is the user inside newUser.save: ', user);*/
-				if(err) throw err;
+				if(err) console.log('there was an error attempting to save a new user (facebook) to the db: ', err);
 				next(null, user);
 			});
 		}
@@ -176,7 +176,7 @@ var twitterStrategy = new TwitterStrategy({
 				incomplete: true
 			});
 			newUser.save(function(err, user) {
-				if(err) throw err;
+				if(err) console.log('there was an error attempting to save a new user (twitter) to the db: ', err);
 				next(null, user);
 			});
 		}
