@@ -169,6 +169,7 @@ var twitterStrategy = new TwitterStrategy({
 			return next(null, user);
 		} else {
 			// no user, so create them
+			console.log('this is the user returned from twitter after registration: ', profile);
 			var newUser = new User({
 				twitterId: profile.id,
 				displayName: profile.displayName,
@@ -177,7 +178,6 @@ var twitterStrategy = new TwitterStrategy({
 			});
 			newUser.save(function(err, user) {
 				if(err) console.log('there was an error attempting to save a new user (twitter) to the db: ', err);
-				console.log('this is the user returned from twitter after registration: ', user);
 				next(null, user);
 			});
 		}
