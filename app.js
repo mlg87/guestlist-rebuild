@@ -61,8 +61,8 @@ app.use(passportConfig.ensureAuthenticated);
 app.get('/logout', portalController.userLogout);
 
 // handlers for getting to the given portal
-app.get('/host-portal', portalController.hostLoggedIn);
-app.get('/guest-portal', portalController.guestLoggedIn);
+app.get('/host-portal/:_id', portalController.hostLoggedIn);
+app.get('/guest-portal/:_id', portalController.guestLoggedIn);
 
 // handlers for updating profile info from the guest/host portals
 app.post('/guest-update-info', portalController.guestUpdateInfo);
@@ -80,8 +80,11 @@ app.post('/profile-msg', profileController.sendMsg);
 // handler for guest email invitation from host
 app.post('/guest-em-invite', portalController.guestInvite);
 
-app.post('/guest-portal', portalController.userRegister);
-app.post('/host-portal', portalController.userRegister);
+app.post('/guest-portal/:_id', portalController.userRegister);
+app.post('/host-portal/:_id', portalController.userRegister);
+
+// handler for guest message inbox
+app.get('/guest-inbox/:_id', portalController.guestInbox);
 
 var port = process.env.PORT || 7160;
 var server = app.listen(port, function() {

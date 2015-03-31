@@ -57,6 +57,7 @@ h1, h2, h3, h4, h5, h6, label {
 
 .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
   background-color: #FFF6E5;
+  color: #2185C5;
 }
 
 .navbar-btn {
@@ -110,11 +111,35 @@ h1, h2, h3, h4, h5, h6, label {
 }
 
 .navbar-default .navbar-brand {
-  color: #7ECEFD;
+  color: #2185C5;
 }
 
 .navbar-default:hover .navbar-brand:hover {
+  color: #7ECEFD;
+}
+
+/*.dropdown-toggle {
+  color: #fff;
+}
+
+.dropdown-toggle:hover {
+  color: blue;
+}*/
+
+.navbar-default .navbar-nav>li>a {
   color: #2185C5;
+}
+
+.navbar-default:hover .navbar-nav>li>a:hover {
+  color: #7ECEFD;
+}
+
+.dropdown-menu>li>a {
+  color: #2185C5;
+}
+
+.dropdown-menu>li>a:hover {
+  color: #7ECEFD;
 }
 
 
@@ -514,4 +539,12 @@ MEDIA QUERIES
   } 
 }
 
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu>li>a {
+  color: #2185C5;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu>li>a:hover {
+    color: #7ECEFD;
+  }
+}
 /* fun times ^^^ */

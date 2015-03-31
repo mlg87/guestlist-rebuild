@@ -1,0 +1,106 @@
+/*
+
+  SITE COLORS:
+
+    blue: #3498db
+    blue(hover): #21628D
+    dark-gray: #626E73
+    darker-gray: 424A4D (66, 74, 77)
+    gray: #8B9CA4
+    clouds: #ecf0f1
+    darker clouds: #717171
+    facebook: #4a6ea9
+    twitter: #5ea9dd
+
+    main: #7ECEFD / rgb(126, 206, 253)
+    paper: #FFF6E5
+    warning: #FF7F66
+    hover: #2185C5
+    text: #3E454C
+
+
+  FONTS:
+
+    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Merriweather', serif;
+
+    FONT WEIGHTS
+
+      Source Sans Pro: 200, 200 italic, 300;
+      Merriweather: 300, 300 italic;
+
+ */
+
+.messages-header {
+	background-color: #2185C5;
+	color: #fff;
+	padding: 10px 0 10px;
+	border-radius: 2px;
+}
+
+.recent-header {
+	background-color: #7ECEFD;
+	color: #fff;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin: 0;
+	border-top-left-radius: 2px;
+}
+
+.current-header {
+	background-color: #FF7F66;
+	color: #fff;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin: 0;
+	border-top-right-radius: 2px;
+	border-bottom-right-radius: 2px;
+}
+
+.recent-thread {
+	background-color: #ecf0f1;
+	min-height: 70vh;
+	padding: 0;
+	border-bottom-right-radius: 2px;
+	border-bottom-left-radius: 2px;
+}
+
+.current-thread {
+	min-height: 70vh;
+	padding: 0;
+}
+
+.message-input-body {
+	width: 100%;
+	resize: none;
+	/*border-color: #ecf0f1;*/
+	border: none;
+}
+
+.message-input-body:focus {
+	outline: none;
+}
+
+.message-input-submit {
+	width: 100%;
+	background-color: transparent;
+	color: #2185C5;
+	border-color: #2185C5;
+}
+
+#current-message-thread {
+	min-height: 50vh;
+}
+
+
+/*******************************************************
+
+MEDIA QUERIES
+
+*******************************************************/
+
+@media (max-width: 768px) {
+  .inbox-container {
+    margin-top: 50px;
+  }
+}

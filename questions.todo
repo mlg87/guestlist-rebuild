@@ -1,0 +1,2 @@
+General Questions:
+ ☐ why does 'guest-portal/:_id' show up literally as that in the URL bar when a user first logs in, but it displays the correct user id once they nav away and come back?

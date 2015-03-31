@@ -1,0 +1,40 @@
+extends layout
+
+block head-scripts
+	link(rel='stylesheet', type='text/css', href='/style_sheets/messages.css')
+
+block navbar
+	.navbar-collapse.navbar-right
+		ul.nav.navbar-nav
+			li.dropdown
+				a.dropdown-toggle(href='#', data-toggle='dropdown', role='button') Menu
+					span.caret
+				ul.dropdown-menu(role='menu')
+					li
+						a(href='/wedding-profile/#{user.myWeddings[0]}') My Weddings
+					li
+						a(href='/profile/#{user._id}') My Profile
+					li
+						a(href='#') Notifications
+					li.divider
+					li
+						a(href='/guest-portal/#{user._id}') My Portal
+					li.divider
+					li
+						a.text-warning(href='/logout') Logout
+					li.divider
+					li
+						a.text-warning(href='#guest-cancel-wedding', data-toggle='modal') Suggest to Cancel the Wedding&nbsp;
+							span.glyphicon.glyphicon-warning-sign
+
+block content
+	.container.inbox-container.footer-pusher
+		h2.messages-header.middle Inbox
+		.recent-thread.col-md-4.col-sm-4.col-xs-4
+			h4.recent-header.middle Recent
+		.current-thread.col-md-8.col-sm-8.col-xs-8
+			h4.current-header.middle Current
+			#current-message-thread
+			form
+				textarea.message-input-body(name='newMessage', rows='4', placeholder='Write your message...')
+				input.message-input-submit.btn.btn-primary(type='submit', value='Send')

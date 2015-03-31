@@ -103,6 +103,12 @@ var portalController = {
 		res.render('guest-portal', {user: req.user});
 	},
 
+	guestInbox: function(req, res, next){
+		var signedInUser = req.user;
+		console.log(signedInUser.firstName + ' ' + signedInUser.lastName + ' is viewing their message portal');
+		res.render('messages', {user: signedInUser});
+	},
+
 	guestInvite: function(req, res, next) {
 		var data = req.body;
 		var wedding = req.user._id;
@@ -243,10 +249,10 @@ var portalController = {
 				// user has successfully logged in
 				console.log('this is a user.role for a successfully logged in user:', user.role);
 				if(user.role === 'host') {
-					return res.redirect('/host-portal');
+					return res.redirect('/host-portal/:_id');
 				}
 				else {
-					return res.redirect('/guest-portal');
+					return res.redirect('/guest-portal/:_id');
 				}
 			});
 		}) (req, res, next);

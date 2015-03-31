@@ -20,13 +20,15 @@ block navbar
 							span.caret
 						ul.dropdown-menu(role='menu')
 							li
-								a(href='#') My Weddings
+								a(href='/wedding-profile/#{user.myWeddings[0]}') My Weddings
 							li
 								a(href='/profile/#{user._id}') My Profile
 							li
-								a(href='#') Messages
+								a(href='/guest-inbox/#{user._id}') Messages
 							li
 								a(href='#') Notifications
+							li
+								a(href='/guest-portal/#{user._id}') My Portal
 							li.divider
 							li
 								a.text-warning(href='/logout') Logout
@@ -43,7 +45,7 @@ block navbar
 							li
 								a(href='#') Notifications
 							li
-								a(href='/host-portal') My Portal
+								a(href='/host-portal/#{user._id}') My Portal
 							li.divider
 							li
 								a.text-warning(href='/logout') Logout
