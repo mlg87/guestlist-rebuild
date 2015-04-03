@@ -1,5 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var path = require('path');
+var fs = require('fs');
 
 var indexController = require('./controllers/index.js');
 var portalController = require('./controllers/portal.js');
@@ -85,6 +87,34 @@ app.post('/host-portal/:_id', portalController.userRegister);
 
 // handler for guest message inbox
 app.get('/guest-inbox/:_id', portalController.guestInbox);
+
+// handler for sending messages
+// app.put('/message', portalController.guestMessage);
+
+// handlers for reactjs messaging
+app.use('/', express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+
+app.get('/sample.json', function(req, res) {
+  fs.readFile('sample.json', function(err, data) {
+    res.setHeader('Content-Type', 'application/json');
+    res.send(data);
+  });
+});
+
+app.post('/sample.json', function(req, res) {
+  fs.readFile('sample.json', function(err, data) {
+    var msgs = JSON.parse(data);
+    msgs.push(req.body);
+    fs.writeFile('sample.json', JSON.stringify(msgs, null, 4), function(err) {
+      res.setHeader('Content-Type', 'application/json');
+      res.setHeader('Cache-Control', 'no-cache');
+      res.send(JSON.stringify(msgs));
+    });
+  });
+});
+
 
 var port = process.env.PORT || 7160;
 var server = app.listen(port, function() {

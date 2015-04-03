@@ -2,6 +2,10 @@ extends layout
 
 block head-scripts
 	link(rel='stylesheet', type='text/css', href='/style_sheets/messages.css')
+	script(src='//fb.me/react-0.13.1.js')
+	script(src='//fb.me/JSXTransformer-0.13.1.js')
+	script(src='//cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js')
+
 
 block navbar
 	.navbar-collapse.navbar-right
@@ -38,3 +42,5 @@ block content
 			form
 				textarea.message-input-body(name='newMessage', rows='4', placeholder='Write your message...')
 				input.message-input-submit.btn.btn-primary(type='submit', value='Send')
+block body-scripts
+	script(type='text/jsx;harmony=true' src='/scripts/messages.js')
