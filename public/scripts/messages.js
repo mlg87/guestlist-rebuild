@@ -19,6 +19,7 @@ var Message = React.createClass({
 // JSX syntax
 var Conversation = React.createClass({
 	loadMsgsFromServer: function() {
+		console.log(user);
 		$.ajax({
 			url: this.props.url,
 			dataType: 'json',
@@ -29,7 +30,24 @@ var Conversation = React.createClass({
 				this.setState({data: data});
 			}.bind(this),
 			error: function(xhr, status, err) {
-				console.error('error setting the state for a Conversation: ', this.props.url, status, 'err.toString: ', err.toString());
+				console.error('error setting the state for a Conversation: ', this.props.url, status, ' | err.toString: ', err.toString, ' | the actual err: ', err());
+			}.bind(this)
+		});
+	},
+	handleMsgSubmit: function(msg) {
+		var msgs = this.state.data;
+		var newMsgs = msgs.concat([msg]);
+		this.setState({data : newMsgs});
+		$.ajax({
+			url: this.props.url,
+			dataType: 'json',
+			type: 'POST',
+			data: msg,
+			success: function(data) {
+				this.setState({data: data});
+			}.bind(this),
+			error: function(xhr, status, err) {
+				console.error(this.props.url, status, err.toString());
 			}.bind(this)
 		});
 	},
@@ -48,7 +66,7 @@ var Conversation = React.createClass({
 		return (
 			<div className='conversation'>
 				<RecentMessages data={this.state.data} />
-				<MessageForm />
+				<MessageForm onMsgSubmit={this.handleMsgSubmit} />
 			</div>
 		);
 	}
@@ -65,7 +83,7 @@ var RecentMessages = React.createClass({
 			);
 		});
 		return (
-			<div className='recent-message-thread'>
+			<div className='current-message-thread'>
 				{messageNodes}
 			</div>
 		);
@@ -73,9 +91,27 @@ var RecentMessages = React.createClass({
 });
 
 var MessageForm = React.createClass({
+	handleSubmit: function(e) {
+		e.preventDefault();
+		console.log('someone just submitted the message form');
+		// defers from tutorial in that they take first name from 
+		// the form and not the signed in user
+		var sender = this.props.firstName;
+		var msg = React.findDOMNode(this.refs.msg).value.trim();
+		if(!msg || !sender) {
+			return;
+		}
+		this.props.onMsgSubmit({sender: sender, msg: msg});
+		// TODO: send req to server
+		React.findDOMNode(this.refs.msg).value = '';
+		return;
+	},
 	render: function() {
 		return(
-			<div className='message-form'></div>
+			<form className='message-form' onSubmit={this.handleSubmit}>
+				<textarea className='message-input-body' name='newMessage' rows='4' placeholder='Write your message...' ref='msg' />
+				<input className='message-input-submit btn btn-primary' type='submit' value='Send' />
+			</form>
 		);
 	}
 });

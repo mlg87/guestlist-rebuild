@@ -59,7 +59,7 @@
 
 .recent-thread {
 	background-color: #ecf0f1;
-	min-height: 550px;
+	height: 550px;
 	padding: 0;
 	border-bottom-right-radius: 2px;
 	border-bottom-left-radius: 2px;
@@ -89,8 +89,20 @@
 	border-color: #2185C5;
 }
 
-#current-message-thread {
+.current-message-thread {
 	height: 388px;
+}
+
+
+/*******************************************************
+
+MSG STYLING
+
+*******************************************************/
+
+.recent-msg {
+	width: 100%;
+	border-bottom: 1px dashed #2185C5;
 }
 
 

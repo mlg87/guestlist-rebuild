@@ -3,7 +3,7 @@
 ////////////
 
 var mongoose = require('mongoose');
-var schema = require('../models/schemas.js');
+// var schema = require('../models/schemas.js');
 var User = require('../models/user.js');
 var TempUser = require('../models/temp-user.js');
 var passport = require('passport');
@@ -77,7 +77,7 @@ var portalController = {
 
 	guestLoggedIn: function(req, res) {
 		console.log(req.session.temp_id);
-		console.log(schema.Guest.findOne());
+		// console.log(schema.Guest.findOne());
 		if(req.session.temp_id) {
 			TempUser.findById(req.session.temp_id, function(err, user) {
 				// loop through all of the weddings on the temp user and accept each wedding (add them to their myWeddings)
