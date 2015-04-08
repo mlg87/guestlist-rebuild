@@ -19,7 +19,7 @@ var Message = React.createClass({
 // JSX syntax
 var Conversation = React.createClass({
 	loadMsgsFromServer: function() {
-		console.log(user);
+		// console.log(user);
 		$.ajax({
 			url: this.props.url,
 			dataType: 'json',
@@ -30,6 +30,7 @@ var Conversation = React.createClass({
 				this.setState({data: data});
 			}.bind(this),
 			error: function(xhr, status, err) {
+				// console.log('user? ', this.props.user);
 				console.error('error setting the state for a Conversation: ', this.props.url, status, ' | err.toString: ', err.toString, ' | the actual err: ', err());
 			}.bind(this)
 		});
@@ -124,8 +125,10 @@ var UserPic = React.createClass({
 	}
 });
 
+var sampleMsgs = [];
+
 React.render(
-	<Conversation url='sample.json' pollInterval={2000} />,
+	<Conversation url={sampleMsgs} pollInterval={2000} />,
 	document.getElementById('current-message-thread')
 );
 
